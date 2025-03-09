@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+// import reactLogo from './assets/react.svg';
+// import viteLogo from '/vite.svg';
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Head from './assets/Head';
@@ -16,7 +16,7 @@ import Last from './assets/Last';
 
 function App() {
   const [count, setCount] = useState(0);
-  const [cart, setCart] = useState([]); // Example cart state
+  const [cart, setCart] = useState([]); 
 
   return (
     <>

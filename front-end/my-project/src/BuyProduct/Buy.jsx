@@ -9,7 +9,7 @@ function Buy() {
   const navigate = useNavigate();
 
   const products = [
-    // Your products array here
+  
 
     {
             id: 1,
@@ -73,12 +73,12 @@ function Buy() {
   };
 
   const goToCartPage = () => {
-    navigate("/cart", { state: { cart } }); // Navigate to Cart Page with cart data
+    navigate("/cart", { state: { cart } }); 
   };
 
   return (
     <div className="">
-      {/* View Cart Button */}
+    
       <div className="fixed bottom-4 right-4">
         <button
           onClick={goToCartPage}
@@ -88,7 +88,7 @@ function Buy() {
         </button>
       </div>
 
-      {/* Product List */}
+      
       <div className="flex flex-wrap justify-center gap-24">
         {products.map((product) => (
           <div key={product.id} className="mt-[50px]">
