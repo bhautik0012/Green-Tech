@@ -173,7 +173,7 @@ function Buy() {
             </div>
           </div>
         </div>
-      )}
+      )} 
     </div>
   );
 }
