@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
-// import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
-// import { Link } from "react-router-dom";
+
 
 import {
   faFacebook,
@@ -146,8 +145,8 @@ function Head() {
 
       <div className="sm:block md:hidden lg:hidden">
         <div className="bg-zinc-900 lg:w-auto pb-[15px] pt-[15px] mt-[15px]  items-center">
-          <nav className="flex items-center gap-5 ">
-            {["/", "/about", "/products", "/service", "/blog", "/contacts"].map(
+          <nav className="flex items-center gap-5 ml-2">
+            {["/", "/about", "/products", "/service", "/blog", "/contacts","/cart"].map(
               (path, index) => (
                 <NavLink
                   key={index}

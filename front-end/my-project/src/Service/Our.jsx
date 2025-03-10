@@ -73,7 +73,7 @@ function Our() {
           <div className="ml-[150px]">
             <img
               className="w-[740px] h-[580px]"
-              src="https://i0.wp.com/www.globaltrademag.com/wp-content/uploads/2021/07/solar-panel.png?fit=757%2C393&ssl=1"
+              src="public/solar-panel1.jpg"
             />
           </div>
         </div>
@@ -82,7 +82,7 @@ function Our() {
           <div>
             <img
               className="w-[780px] h-[540px]"
-              src="https://png.pngtree.com/thumb_back/fh260/background/20230727/pngtree-solar-panels-on-a-field-of-grass-image_10234401.jpg"
+              src="public/solar-panel2.jpg"
             />
           </div>
 
@@ -168,7 +168,7 @@ function Our() {
           <div className="ml-[150px]">
             <img
               className="w-[740px] h-[580px]"
-              src="https://media.istockphoto.com/id/114338035/photo/solar-panel-installation.jpg?s=612x612&w=0&k=20&c=P3K0opLbTHWjGYS5FUg6wHKcJEDW4WoXWmy2WRM_4-o="
+              src="public/solar-panel3.jpg"
             />
           </div>
         </div>
@@ -177,7 +177,7 @@ function Our() {
           <div>
             <img
               className="w-[780px] h-[540px]"
-              src="https://media.istockphoto.com/id/1373265915/photo/a-worker-on-the-roof-using-laptop-charged-by-sun-energy.jpg?s=612x612&w=0&k=20&c=jO_WkUZ65WiGRmh1q016IaRpIiKeQm-GsMz3LUSOSfc="
+              src="public/solar-panel4.jpg"
             />
           </div>
 
@@ -248,7 +248,7 @@ function Our() {
         <div className="p-5">
           <img
             className="mt-[40px] "
-            src="https://i0.wp.com/www.globaltrademag.com/wp-content/uploads/2021/07/solar-panel.png?fit=757%2C393&ssl=1"
+            src="public/solar-panel1.jpg"
           />
 
           <div>
@@ -288,7 +288,7 @@ function Our() {
         <div className="p-5">
           <img
             className="mt-[40px] w-full"
-            src="https://png.pngtree.com/thumb_back/fh260/background/20230727/pngtree-solar-panels-on-a-field-of-grass-image_10234401.jpg"
+            src="public/solar-panel2.jpg"
           />
 
           <div>
@@ -331,7 +331,7 @@ function Our() {
         <div className="p-5">
           <img
             className="mt-[40px] w-full "
-            src="https://media.istockphoto.com/id/114338035/photo/solar-panel-installation.jpg?s=612x612&w=0&k=20&c=P3K0opLbTHWjGYS5FUg6wHKcJEDW4WoXWmy2WRM_4-o="
+            src="public/solar-panel3.jpg"
           />
 
           <div>
@@ -381,8 +381,8 @@ function Our() {
 
         <div className="p-5">
           <img
-            className="mt-[40px] w-auto"
-            src="https://weselectricincwaller.com/wp-content/uploads/2019/10/post3.jpg"
+            className="mt-[40px] w-full"
+            src="public/solar-panel4.jpg"
           />
 
           <div>
@@ -446,7 +446,7 @@ function Our() {
           </div>
         </div>
         <div className="p-5 mt-[30px]">
-          <img src="https://i0.wp.com/www.globaltrademag.com/wp-content/uploads/2021/07/solar-panel.png?fit=757%2C393&ssl=1" />
+          <img src="public/solar-panel1.jpg" />
 
           <div>
             <p className="text-[28px] text-center mt-[35px]">
@@ -475,7 +475,7 @@ function Our() {
       
 
       <div className="p-5 mt-[50px]">
-        <img src="https://png.pngtree.com/thumb_back/fh260/background/20230727/pngtree-solar-panels-on-a-field-of-grass-image_10234401.jpg" />
+        <img src="public/solar-panel2.jpg" />
 
         <div>
           <p className="text-[20px] text-bold text-center mt-[35px]">
@@ -504,7 +504,7 @@ function Our() {
       </div>
 
       <div className="p-5 mt-[50px]">
-        <img src="https://media.istockphoto.com/id/114338035/photo/solar-panel-installation.jpg?s=612x612&w=0&k=20&c=P3K0opLbTHWjGYS5FUg6wHKcJEDW4WoXWmy2WRM_4-o=" />
+        <img src="public/solar-panel3.jpg" />
 
         <div>
           <p className="text-[28px] text-bold text-center mt-[35px]">
@@ -534,7 +534,7 @@ function Our() {
       </div>
 
       <div className="p-5 mt-[50px]">
-        <img src="https://weselectricincwaller.com/wp-content/uploads/2019/10/post3.jpg" />
+        <img src="public/solar-panel4.jpg" />
 
         <div>
           <p className="text-[28px] text-center mt-[35px]">

@@ -126,7 +126,7 @@ function Us() {
           </div>
         </div>
       </div>
-
+{/* middle screen  */}
       <div className="lg:hidden md:block sm:hidden">
         <div>
           <p className="text-center text-[30px] mt-[80px]">𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐔𝐒</p>
@@ -248,7 +248,7 @@ function Us() {
 
 
 
-
+{/* small screen  */}
 
 
       
@@ -259,7 +259,7 @@ function Us() {
         <div className="text-center">
           <img
             className="w-full p-4 mt-[30px]"
-            src="https://livedemo00.template-help.com/wt_60074/images/home-08-270x180.jpg"
+            src="public/Contact1.jpg"
           />
 
           <p className="text-[20px] mt-[20px]">𝐇𝐐 𝐎𝐟𝐟𝐢𝐜𝐞 (𝐁𝐨𝐬𝐭𝐨𝐧, 𝐌𝐀, 𝐔𝐒𝐀)</p>
@@ -276,7 +276,7 @@ function Us() {
         <div className="text-center">
           <img
             className="w-full p-4 mt-[30px]"
-            src="https://livedemo00.template-help.com/wt_60074/images/home-09-270x180.jpg"
+            src="public/Contact2.jpg"
           />
 
           <p className="text-[20px] mt-[20px]">𝐇𝐐 𝐎𝐟𝐟𝐢𝐜𝐞 (𝐁𝐨𝐬𝐭𝐨𝐧, 𝐌𝐀, 𝐔𝐒𝐀)</p>

@@ -69,16 +69,6 @@ const Navbar = () => {
             Register
           </NavLink>
 
-          {/* <NavLink
-            to="/order"
-            className={({ isActive }) =>
-              `transition-all cursor-pointer text-gray-400 font-bold duration-500 hover:scale-110 ${
-                isActive ? "text-white" : "hover:text-white"
-              }`
-            }
-          >
-            cart
-          </NavLink> */}
         </ul>
       </nav>
     </header>
