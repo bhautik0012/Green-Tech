@@ -35,6 +35,8 @@ import App20 from "./cart/App20.jsx";
 
 
 
+
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
@@ -58,6 +60,7 @@ const router = createBrowserRouter(
       <Route path="/Click9" element={<App18/>} />
       <Route path="/Buy" element={<App19/>} />
       <Route path="/cart" element={<App20/>} />
+      
       
     </Route>
   )
