@@ -348,6 +348,7 @@ function Cart() {
                     <option value="HDFC">HDFC Bank</option>
                     <option value="ICICI">ICICI Bank</option>
                     <option value="Axis">Axis Bank</option>
+                    <option value="BOB">BOB</option>
                   </select>
                   {errors.bankName && (
                     <p className="text-sm text-red-500">{errors.bankName}</p>

@@ -119,7 +119,7 @@ function Us() {
                   type="submit"
                   className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1"
                 >
-                  𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+                  𝐒𝐄𝐍𝐃
                 </button>
               </div>
             </form>
@@ -236,7 +236,7 @@ function Us() {
               type="submit"
               className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1"
             >
-              𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+              𝐒𝐄𝐍𝐃
             </button>
           </div>
         </form>
@@ -339,7 +339,7 @@ function Us() {
               type="submit"
               className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1"
             >
-              𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+              𝐒𝐄𝐍𝐃
             </button>
           </div>
         </form>
