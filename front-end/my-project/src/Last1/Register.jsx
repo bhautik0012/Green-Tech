@@ -88,7 +88,7 @@ const Register = () => {
         }}
       >
         <div className="lg:pt-[60px] md:pt-[20px] sm:pt-[30px]">
-        <div className="lg:mt-[0px] p-7 border border-black lg:w-[850px] md:w-[500px]  rounded-2xl backdrop-blur-sm lg:ml-[300px] md:ml-[100px] sm:ml-[10px] md:mt-[0px] sm:mt-[0px] mb-[50px] sm:w-[400px] ">
+        <div className="lg:mt-[0px] p-7 border border-black lg:w-[850px] md:w-[500px]  rounded-2xl backdrop-blur-sm lg:ml-[300px] md:ml-[100px] sm:ml-[10px] md:mt-[0px] sm:mt-[0px] mb-[50px] sm:w-[400px] shadow-2xl shadow-black">
 
           <div className="lg:flex">
 
