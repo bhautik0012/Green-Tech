@@ -31,12 +31,6 @@ import App18 from "./Product9/App18.jsx";
 import App19 from "./BuyProduct/App19.jsx";
 import App20 from "./cart/App20.jsx";
 
-
-
-
-
-
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
@@ -49,19 +43,17 @@ const router = createBrowserRouter(
       <Route path="/login" element={<App7 />} />
       <Route path="/register" element={<App8 />} />
       <Route path="/Read" element={<App9 />} />
-      <Route path="/Click1" element={<App10/>} />
-      <Route path="/Click2" element={<App11/>} />
-      <Route path="/Click3" element={<App12/>} />
-      <Route path="/Click4" element={<App13/>} />
-      <Route path="/Click5" element={<App14/>} />
-      <Route path="/Click6" element={<App15/>} />
-      <Route path="/Click7" element={<App16/>} />
-      <Route path="/Click8" element={<App17/>} />
-      <Route path="/Click9" element={<App18/>} />
-      <Route path="/Buy" element={<App19/>} />
-      <Route path="/cart" element={<App20/>} />
-      
-      
+      <Route path="/Click1" element={<App10 />} />
+      <Route path="/Click2" element={<App11 />} />
+      <Route path="/Click3" element={<App12 />} />
+      <Route path="/Click4" element={<App13 />} />
+      <Route path="/Click5" element={<App14 />} />
+      <Route path="/Click6" element={<App15 />} />
+      <Route path="/Click7" element={<App16 />} />
+      <Route path="/Click8" element={<App17 />} />
+      <Route path="/Click9" element={<App18 />} />
+      <Route path="/Buy" element={<App19 />} />
+      <Route path="/cart" element={<App20 />} />
     </Route>
   )
 );
