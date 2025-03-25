@@ -84,7 +84,7 @@ const Login = () => {
                 required
               />
               <p className="font-semibold text-cyan-50 mt-[20px] md:ml-[180px] lg:ml-[180px] sm:ml-[100px]">
-                Forget password?
+              <Link to="/forgot-password">Forgot password?</Link>
               </p>
             </div>
 
