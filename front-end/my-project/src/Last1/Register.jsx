@@ -88,7 +88,7 @@ const Register = () => {
         }}
       >
         <div className="lg:pt-[60px] md:pt-[20px] sm:pt-[30px]">
-        <div className="lg:mt-[0px] p-7 border border-black lg:w-[850px] md:w-[500px]  rounded-2xl backdrop-blur-sm lg:ml-[300px] md:ml-[100px] sm:ml-[10px] md:mt-[0px] sm:mt-[0px] mb-[50px] sm:w-[400px] shadow-2xl shadow-black">
+        <div className="lg:mt-[0px] p-7 lg:w-[850px] md:w-[500px] lg:ml-[340px] md:ml-[100px] sm:ml-[10px] md:mt-[0px] sm:mt-[0px] mb-[50px] sm:w-[400px] bg-white border border-gray-300 shadow-2xl bg-opacity-5 backdrop-blur-sm rounded-2xl shadow-black">
 
           <div className="lg:flex">
 
@@ -100,7 +100,7 @@ const Register = () => {
 
               <input
                 type="name"
-                className="border-black bg-gray-200 p-1 rounded placeholder:text-[19px] lg:w-[330px] md:w-[330px] sm:w-[260px] border-[1px] outline-none border-l-transparent border-r-transparent border-t-transparent "
+                className=" p-2  placeholder:text-[19px] lg:w-[330px] md:w-[330px] sm:w-[260px] text-white placeholder-white bg-white border-b-2 border-white rounded bg-opacity-20 focus:outline-none focus:border-green-400 "
                 value={name}
                 placeholder="Name"
                 onChange={(e) => {
@@ -110,7 +110,7 @@ const Register = () => {
               <br></br>
               <input
                 type="text"
-                className="border-black p-1 bg-gray-200 rounded placeholder:text-[19px] mt-[30px] lg:w-[330px] md:w-[330px] sm:w-[260px] border-[1px] outline-none border-l-transparent border-r-transparent border-t-transparent "
+                className="placeholder:text-[19px] mt-[30px] lg:w-[330px] md:w-[330px] sm:w-[260px] text-white placeholder-white bg-white border-b-2 border-white rounded bg-opacity-20 focus:outline-none focus:border-green-400 p-2"
                 value={email}
                 placeholder="email"
                 onChange={(e) => {
@@ -120,7 +120,7 @@ const Register = () => {
               <br></br>
               <input
                 type="password"
-                className="border-black bg-gray-200 p-1 rounded lg:w-[330px] md:w-[330px] sm:w-[260px] placeholder:text-[19px] mt-[30px] border-[1px] outline-none border-l-transparent border-r-transparent border-t-transparent "
+                className="text-white placeholder-white bg-white border-b-2 border-white rounded bg-opacity-20 focus:outline-none focus:border-green-400 p-2  lg:w-[330px] md:w-[330px] sm:w-[260px] placeholder:text-[19px] mt-[30px]  "
                 value={password}
                 placeholder="password"
                 onChange={(e) => {
@@ -131,12 +131,12 @@ const Register = () => {
 
             </div>
 
-            <div className="lg:mt-[125px] md:mt-[-135px] sm:mt-[15px] sm:ml-[45px]">
+            <div className="lg:mt-[125px] md:mt-[-110px] sm:mt-[15px] sm:ml-[45px]">
 
 
               <input
                 type="number"
-                className="border-black p-1 bg-gray-200 rounded placeholder:text-[19px] lg:w-[330px] md:w-[330px] sm:w-[260px] border-[1px] outline-none border-l-transparent border-r-transparent border-t-transparent "
+                className=" p-2  placeholder:text-[19px] lg:w-[330px] md:w-[330px] sm:w-[260px] text-white placeholder-white bg-white border-b-2 border-white rounded bg-opacity-20 focus:outline-none focus:border-green-400 "
                 value={mobile}
                 placeholder="Mobile No"
                 onChange={(e) => {
@@ -147,7 +147,7 @@ const Register = () => {
               <br></br>
               <input
                 type="number"
-                className="border-black p-1 bg-gray-200 rounded placeholder:text-[19px] mt-[30px] lg:w-[330px] md:w-[330px] sm:w-[260px] border-[1px] outline-none border-l-transparent border-r-transparent border-t-transparent "
+                className="text-white placeholder-white bg-white border-b-2 border-white  bg-opacity-20 focus:outline-none focus:border-green-400 p-2  rounded placeholder:text-[19px] mt-[30px] lg:w-[330px] md:w-[330px] sm:w-[260px]  "
                 value={age}
                 placeholder="Age"
                 onChange={(e) => {
@@ -159,7 +159,7 @@ const Register = () => {
               <br></br>
               <input
                 type="text"
-                className="border-black p-1 bg-gray-200 rounded placeholder:text-[19px] mt-[30px] lg:w-[330px] md:w-[330px] sm:w-[260px] border-[1px] outline-none border-l-transparent border-r-transparent border-t-transparent "
+                className="text-white placeholder-white bg-white border-b-2 border-white rounded bg-opacity-20 focus:outline-none focus:border-green-400 p-2  placeholder:text-[19px] mt-[30px] lg:w-[330px] md:w-[330px] sm:w-[260px]  "
                 value={city}
                 placeholder="City"
                 onChange={(e) => {
@@ -172,13 +172,15 @@ const Register = () => {
           </div>
 
           <div>
+            <Link to={"/login"}>
             <input
               type="submit"
               onClick={() => AddUser()}
-              className="pt-1 bg-gray-200 pb-1 pl-6 pr-6 lg:ml-[350px] md:ml-[120px] sm:ml-[90px] mt-[45px] border border-black rounded-md lg:mb-[0px] md:mb-[0px] text-black sm:mb-[20px] hover:bg-green-400 duration-500 hover:border-green-400 hover:text-white  font-bold"
+              className="px-4 py-3 font-bold text-white transition lg:ml-[340px] sm:ml-[100px] md:ml-[120px] mt-[15px] duration-300 bg-green-500 rounded w-[150px] hover:bg-green-600 focus:outline-none focus:shadow-outline"
               value="Register"
 
             ></input>
+            </Link>
             <br></br>
             <div className="lg:ml-[320px] sm:mb-[20px] lg:mt-[30px] md:mt-[30px] sm:mt-[px] ">
               <Link to={"/login"}>
