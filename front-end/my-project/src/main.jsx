@@ -1,16 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
-import Layout from "./Layout/Layout.jsx";
-
+import { AuthProvider } from "./Auth/AuthContext.jsx";
 import {
-  BrowserRouter,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
+import Layout from "./Layout/Layout.jsx";
+import App from "./App.jsx";
 import App2 from "./About/App2.jsx";
 import App3 from "./Products/App3.jsx";
 import App4 from "./Service/App4.jsx";
@@ -30,33 +29,44 @@ import App17 from "./Product8/App17.jsx";
 import App18 from "./Product9/App18.jsx";
 import App19 from "./BuyProduct/App19.jsx";
 import App20 from "./cart/App20.jsx";
+import App21 from "./Auth/App21.jsx";
 
+// Create the router configuration
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
-      <Route index path="" element={<App />} />
-      <Route path="/about" element={<App2 />} />
-      <Route path="/products" element={<App3 />} />
-      <Route path="/service" element={<App4 />} />
-      <Route path="/blog" element={<App5 />} />
-      <Route path="/contacts" element={<App6 />} />
-      <Route path="/login" element={<App7 />} />
-      <Route path="/register" element={<App8 />} />
-      <Route path="/Read" element={<App9 />} />
-      <Route path="/Click1" element={<App10 />} />
-      <Route path="/Click2" element={<App11 />} />
-      <Route path="/Click3" element={<App12 />} />
-      <Route path="/Click4" element={<App13 />} />
-      <Route path="/Click5" element={<App14 />} />
-      <Route path="/Click6" element={<App15 />} />
-      <Route path="/Click7" element={<App16 />} />
-      <Route path="/Click8" element={<App17 />} />
-      <Route path="/Click9" element={<App18 />} />
-      <Route path="/Buy" element={<App19 />} />
-      <Route path="/cart" element={<App20 />} />
+    <Route 
+      path="/" 
+      element={
+        <AuthProvider> {/* Wrap Layout with AuthProvider */}
+          <Layout />
+        </AuthProvider>
+      }
+    >
+      <Route index element={<App />} />
+      <Route path="about" element={<App2 />} />
+      <Route path="products" element={<App3 />} />
+      <Route path="service" element={<App4 />} />
+      <Route path="blog" element={<App5 />} />
+      <Route path="contacts" element={<App6 />} />
+      <Route path="login" element={<App7 />} />
+      <Route path="register" element={<App8 />} />
+      <Route path="Read" element={<App9 />} />
+      <Route path="Click1" element={<App10 />} />
+      <Route path="Click2" element={<App11 />} />
+      <Route path="Click3" element={<App12 />} />
+      <Route path="Click4" element={<App13 />} />
+      <Route path="Click5" element={<App14 />} />
+      <Route path="Click6" element={<App15 />} />
+      <Route path="Click7" element={<App16 />} />
+      <Route path="Click8" element={<App17 />} />
+      <Route path="Click9" element={<App18 />} />
+      <Route path="Buy" element={<App19 />} />
+      <Route path="cart" element={<App20 />} />
+      <Route path="auth" element={<App21 />} />
     </Route>
   )
 );
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
