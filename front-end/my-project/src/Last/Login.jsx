@@ -53,7 +53,6 @@
 //         }}
 //       >
 
-
 //         <div className="lg:mt-[0px] pt-20 lg:ml-[580px] md:mt-[80px] md:ml-[200px] sm:ml-[45px] sm:mt-[50px]">
 //           <div className="lg:pl-6 border rounded-2xl backdrop-blur-sm border-black lg:pt-10 lg:pr-5 md:pl-6 md:pt-10 md:pr-5  sm:p-6 lg:w-[375px] lg:h-[400px] md:w-[367px] md:h-[400px] sm:w-[300px] shadow-2xl shadow-black">
 //             <div className="font-bold text-cyan-50 text-[30px] mb-[30px] me-8  text-center">
@@ -125,17 +124,6 @@
 
 // export default Login;
 
-
-
-
-
-
-
-
-
-
-
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -145,10 +133,19 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, logout } = useAuth(); // Make sure to destructure logout if needed
+  const { login, setlogin } = useAuth(); // Make sure to destructure logout if needed
+  // const { logout, setlogout } = useState(""); // Make sure to destructure logout if needed
   const [isLoading, setIsLoading] = useState(false); // Add loading state
 
-  const handleLogin = async () => {
+  const logout = () => {
+    axios.get("https://solar-api-d41x.onrender.com/logout").then(function (response) {
+      console.log(response.data.status);
+      if (response.data.status == "admin logout") {
+        alert("logout");
+      }
+    })  
+  }
+  const Login = async () => {
     if (!email || !password) {
       alert("Please enter both email and password");
       return;
@@ -158,16 +155,18 @@ const Login = () => {
     const data = {
       email: email,
       password: password,
+      
     };
 
+    
     try {
       const response = await axios.post(
-        "https://solar-api-d41x.onrender.com/login", 
+        "https://solar-api-d41x.onrender.com/login",
         data,
         {
           headers: {
-            'Content-Type': 'application/json'
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
 
@@ -209,7 +208,6 @@ const Login = () => {
     }
   };
 
- 
   return (
     <>
       <body
@@ -219,8 +217,6 @@ const Login = () => {
           objectFit: `cover`,
         }}
       >
-
-
         <div className="lg:mt-[0px] pt-20 lg:ml-[580px] md:mt-[80px] md:ml-[200px] sm:ml-[45px] sm:mt-[50px]">
           <div className="lg:pl-6 border rounded-2xl backdrop-blur-sm border-black lg:pt-10 lg:pr-5 md:pl-6 md:pt-10 md:pr-5  sm:p-6 lg:w-[375px] lg:h-[400px] md:w-[367px] md:h-[400px] sm:w-[300px] shadow-2xl shadow-black">
             <div className="font-bold text-cyan-50 text-[30px] mb-[30px] me-8  text-center">
@@ -251,27 +247,30 @@ const Login = () => {
                 required
               />
               <p className="font-semibold text-cyan-50 mt-[20px] md:ml-[180px] lg:ml-[180px] sm:ml-[100px]">
-              <Link to="/forgot-password">Forgot password?</Link>
+                <Link to="/forgot-password">Forgot password?</Link>
               </p>
             </div>
 
             <div className="lg:flex md:flex sm:flex">
               <div>
-                <button
                 
-                  className="lg:pt-2 lg:pb-2 text-cyan-50 lg:pl-3 lg:pr-3 border border-white rounded-md ml-[30px] mt-[20px] sm:pt-2 sm:pb-2 sm:pl-3 sm:pr-3  hover:bg-green-400 duration-500 hover:border-green-400 hover:text-white  font-bold"
-                  onClick={() => {
-                    login();
-                  }}
-                >
-                  Login Now
-                </button>
+                  <button
+                    className="lg:pt-2 lg:pb-2 text-cyan-50 lg:pl-3 lg:pr-3 border border-white rounded-md ml-[30px] mt-[20px] sm:pt-2 sm:pb-2 sm:pl-3 sm:pr-3  hover:bg-green-400 duration-500 hover:border-green-400 hover:text-white  font-bold"
+                    value="Login"
+                    onClick={() => {
+                      Login();
+                    }}
+                  >
+                    Login Now
+                  </button>
+                
               </div>
               <div>
                 <button
                   className="lg:pt-2 text-cyan-50 lg:pb-2 lg:pl-3 lg:pr-3 mt-[20px] border border-white rounded-md ml-[30px] sm:pt-2 sm:pb-2 sm:pl-3 sm:pr-3  hover:bg-green-400 duration-500 hover:border-green-400 hover:text-white  font-bold"
                   onClick={() => {
                     logout();
+                   value="logout"
                   }}
                 >
                   Logout Now
@@ -281,7 +280,12 @@ const Login = () => {
 
             <div className="text-center  text-cyan-50 mt-[30px]">
               <Link to={"/register"}>
-                <a href="" className="duration-500 hover:text-green-400 hover:text-green ">Create an account!</a>
+                <a
+                  href=""
+                  className="duration-500 hover:text-green-400 hover:text-green "
+                >
+                  Create an account!
+                </a>
               </Link>
             </div>
           </div>
