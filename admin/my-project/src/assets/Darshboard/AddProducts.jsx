@@ -188,32 +188,54 @@
 
 // export default AddProducts;
 
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const AddProducts = () => {
   const navigate = useNavigate();
-  const [solarImage, setSolarImage] = useState("");
+  const [solarImage, setSolarImage] = useState(null); // store file
   const [productName, setProductName] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
 
   const add = async () => {
-    const data = {
-      solarImage: solarImage,
-      productName: productName,
-      price: price,
-    };
+    const formData = new FormData();
+    formData.append("solarImage", solarImage);
+    formData.append("productName", productName);
+    formData.append("price", price);
 
-    await axios
-      .post("https://solar-api-d41x.onrender.com/product/add", data)
-      .then(function (response) {
-        console.log(response.data.status);
-      });
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/product/add",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(response.data.status);
 
-    setSolarImage("");
-    setProductName("");
-    setPrice("");
+      navigate("/productshow");
+      // Reset form
+      setSolarImage(null);
+      setProductName("");
+      setPrice("");
+    } catch (error) {
+      console.error("Upload failed", error);
+    }
   };
 
   return (
@@ -221,15 +243,14 @@ const AddProducts = () => {
       <div className="lg:mt-[0px] pt-20 lg:ml-[580px] md:mt-[80px] md:ml-[200px] sm:ml-[45px] sm:mt-[50px]">
         <div className="lg:pl-6 border rounded-2xl backdrop-blur-sm border-black lg:pt-10 lg:pr-5 md:pl-6 md:pt-10 md:pr-5 sm:p-6 lg:w-[375px] lg:h-[400px] md:w-[367px] md:h-[400px] sm:w-[300px]">
           <div className="font-bold text-cyan-50 text-[30px] mb-[30px] me-8 text-center">
-            <h2>Login</h2>
+            <h2>Add Product</h2>
           </div>
 
           <div>
             <input
               className="border-black p-1 rounded placeholder:text-[19px] lg:w-[300px] md:w-[300px] sm:w-[230px] border-[1px] outline-none border-l-transparent border-r-transparent border-t-transparent"
               type="file"
-              value={solarImage}
-              onChange={(e) => setSolarImage(e.target.value)}
+              onChange={(e) => setSolarImage(e.target.files[0])}
               required
             />
           </div>
@@ -239,6 +260,7 @@ const AddProducts = () => {
               type="text"
               value={productName}
               onChange={(e) => setProductName(e.target.value)}
+              placeholder="Product Name"
               required
             />
           </div>
@@ -249,20 +271,21 @@ const AddProducts = () => {
               type="number"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
+              placeholder="Price"
               required
             />
           </div>
 
           <div className="lg:flex md:flex sm:flex">
             <div>
+              
               <button
-                className="lg:pt-2 lg:pb-2 text-cyan-50 lg:pl-3 lg:pr-3 border border-white rounded-md ml-[30px] mt-[20px] sm:pt-2 sm:pb-2 sm:pl-3 sm:pr-3  hover:bg-green-400 duration-500 hover:border-green-400 hover:text-white  font-bold"
-                onClick={() => {
-                  add();
-                }}
+                className="lg:pt-2 lg:pb-2 text-cyan-50 lg:pl-3 lg:pr-3 border border-white rounded-md ml-[30px] mt-[20px] sm:pt-2 sm:pb-2 sm:pl-3 sm:pr-3 hover:bg-green-400 duration-500 hover:border-green-400 hover:text-white font-bold"
+                onClick={add}
               >
                 Add Product
               </button>
+             
             </div>
           </div>
         </div>
@@ -272,3 +295,4 @@ const AddProducts = () => {
 };
 
 export default AddProducts;
+

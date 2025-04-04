@@ -117,6 +117,19 @@ function Head1() {
                 <FontAwesomeIcon icon={faPlus} className="mr-3" />
                 Add Product
               </NavLink>
+
+              <NavLink
+                to="/productshow"
+                onClick={toggleSidebar}
+                className={({ isActive }) =>
+                  `flex items-center p-3 rounded-lg transition-colors ${
+                    isActive ? "bg-green-100 text-green-800" : "hover:bg-gray-100"
+                  }`
+                }
+              >
+                <FontAwesomeIcon className="mr-3" />
+                Show Product
+              </NavLink>
             </div>
           </div>
         </div>
