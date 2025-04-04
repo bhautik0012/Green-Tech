@@ -45,7 +45,7 @@ const Update = () => {
     const data = {
       name: name,
       email: email,
-      password: password,
+      // password: password,
       mobile: mobile,
       age: age,
       city: city,
@@ -99,7 +99,7 @@ const Update = () => {
                 setEmail(e.target.value);
               }}
             ></input>
-            <br></br>
+            {/* <br></br>
             <label className="text-white me-1 fs-5">Password :- </label>
             <input
               type="password"
@@ -109,7 +109,7 @@ const Update = () => {
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
-            ></input>{" "}
+            ></input>{" "} */}
             <br></br>
             <label className="text-white me-4 fs-5">Mobile :-</label>
             <input

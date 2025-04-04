@@ -270,7 +270,7 @@ function Head() {
 
       <div className="sm:block md:hidden lg:hidden">
         <div className="bg-zinc-900 lg:w-auto pb-[15px] pt-[15px] mt-[15px]  items-center">
-          <nav className="flex items-center gap-5 ml-2">
+          <nav className="flex items-center gap-3 ml-2">
             {["/", "/about", "/products", "/service", "/blog", "/contacts","/cart"].map(
               (path, index) => (
                 <NavLink

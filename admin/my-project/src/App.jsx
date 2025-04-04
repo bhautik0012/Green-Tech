@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Adminlogin />}></Route>
           <Route path="/viewdata" element={<Userdata />}></Route>
-          <Route path="/dashboard" element={<Darshboard/>}></Route>
+          <Route path="/add-product" element={<Darshboard/>}></Route>
           <Route path="/updatedata/:id" element={<Update />}></Route>
         </Routes>
       </BrowserRouter>

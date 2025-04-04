@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Our() {
   return (
@@ -63,9 +64,11 @@ function Our() {
               <p>supply or not...</p>
 
               <div className="mt-[60px]">
-                <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
-                  𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
-                </button>
+                <NavLink to="/serviceprovider">
+                  <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
+                    𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+                  </button>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -118,9 +121,11 @@ function Our() {
               <p>equipment manufacturing and installing.</p>
             </div>
             <div className="mt-[60px]">
-              <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
-                𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
-              </button>
+              <NavLink to="/serviceprovider">
+                <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
+                  𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+                </button>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -158,9 +163,11 @@ function Our() {
               <p>supply or not...</p>
 
               <div className="mt-[60px]">
-                <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
-                  𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
-                </button>
+                <NavLink to="/serviceprovider">
+                  <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
+                    𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+                  </button>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -215,9 +222,11 @@ function Our() {
               </p>
             </div>
             <div className="mt-[60px]">
-              <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
-                𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
-              </button>
+              <NavLink to="/serviceprovider">
+                <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
+                  𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+                </button>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -246,10 +255,7 @@ function Our() {
         </div>
 
         <div className="p-5">
-          <img
-            className="mt-[40px] "
-            src="public/solar-panel1.jpg"
-          />
+          <img className="mt-[40px] " src="public/solar-panel1.jpg" />
 
           <div>
             <p className="text-[28px] text-center mt-[20px]">
@@ -279,17 +285,16 @@ function Our() {
           </div>
 
           <div className="mt-[50px] ml-[255px]">
-            <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
-              𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
-            </button>
+            <NavLink to="/serviceprovider">
+              <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
+                𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+              </button>
+            </NavLink>
           </div>
         </div>
 
         <div className="p-5">
-          <img
-            className="mt-[40px] w-full"
-            src="public/solar-panel2.jpg"
-          />
+          <img className="mt-[40px] w-full" src="public/solar-panel2.jpg" />
 
           <div>
             <p className="text-[28px] text-center mt-[20px]">
@@ -322,17 +327,16 @@ function Our() {
           </div>
 
           <div className="mt-[50px] ml-[255px]">
-            <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
-              𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
-            </button>
+            <NavLink to="/serviceprovider">
+              <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
+                𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+              </button>
+            </NavLink>
           </div>
         </div>
 
         <div className="p-5">
-          <img
-            className="mt-[40px] w-full "
-            src="public/solar-panel3.jpg"
-          />
+          <img className="mt-[40px] w-full " src="public/solar-panel3.jpg" />
 
           <div>
             <p className="text-[28px] text-center mt-[20px]">
@@ -373,17 +377,16 @@ function Our() {
           </div>
 
           <div className="mt-[50px] ml-[255px]">
-            <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
-              𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
-            </button>
+            <NavLink to="/serviceprovider">
+              <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
+                𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+              </button>
+            </NavLink>
           </div>
         </div>
 
         <div className="p-5">
-          <img
-            className="mt-[40px] w-full"
-            src="public/solar-panel4.jpg"
-          />
+          <img className="mt-[40px] w-full" src="public/solar-panel4.jpg" />
 
           <div>
             <p className="text-[28px] text-center mt-[20px]">
@@ -417,9 +420,11 @@ function Our() {
           </div>
 
           <div className="mt-[50px] ml-[255px]">
-            <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
-              𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
-            </button>
+            <NavLink to="/serviceprovider">
+              <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
+                𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+              </button>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -468,98 +473,105 @@ function Our() {
         </div>
 
         <div className="mt-[20px] ml-[115px]">
-          <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
-            𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
-          </button>
+          <NavLink to="/serviceprovider">
+            <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
+              𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+            </button>
+          </NavLink>
         </div>
-      
 
-      <div className="p-5 mt-[50px]">
-        <img src="public/solar-panel2.jpg" />
+        <div className="p-5 mt-[50px]">
+          <img src="public/solar-panel2.jpg" />
 
-        <div>
-          <p className="text-[20px] text-bold text-center mt-[35px]">
-            𝐂𝐎𝐌𝐌𝐄𝐑𝐂𝐈𝐀𝐋 𝐈𝐍𝐒𝐓𝐀𝐋𝐋𝐀𝐓𝐈𝐎𝐍 𝐂𝐎𝐍𝐒𝐔𝐋𝐓𝐈𝐍𝐆
-          </p>
-          <div className="p-4 text-center text-gray-400">
-            <p>
-              Besides providing miscellaneous solar power solutions for private
-              clients and residential buildings, we also help commercial
-              businesses, as well as government institutions in switching to
-              solar power. If you're an owner or a manager of a small, medium or
-              a big business or a separate office building, then we'll be glad
-              to advise you on this matter. It's important to remember that
-              switching high-consumption offices to solar energy takes more time
-              in both preparation and technical equipment manufacturing and
-              installing.
+          <div>
+            <p className="text-[20px] text-bold text-center mt-[35px]">
+              𝐂𝐎𝐌𝐌𝐄𝐑𝐂𝐈𝐀𝐋 𝐈𝐍𝐒𝐓𝐀𝐋𝐋𝐀𝐓𝐈𝐎𝐍 𝐂𝐎𝐍𝐒𝐔𝐋𝐓𝐈𝐍𝐆
             </p>
+            <div className="p-4 text-center text-gray-400">
+              <p>
+                Besides providing miscellaneous solar power solutions for
+                private clients and residential buildings, we also help
+                commercial businesses, as well as government institutions in
+                switching to solar power. If you're an owner or a manager of a
+                small, medium or a big business or a separate office building,
+                then we'll be glad to advise you on this matter. It's important
+                to remember that switching high-consumption offices to solar
+                energy takes more time in both preparation and technical
+                equipment manufacturing and installing.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="mt-[20px] ml-[115px]">
-        <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
-          𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
-        </button>
-      </div>
+        <div className="mt-[20px] ml-[115px]">
+          <NavLink to="/serviceprovider">
+            <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
+              𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+            </button>
+          </NavLink>
+        </div>
 
-      <div className="p-5 mt-[50px]">
-        <img src="public/solar-panel3.jpg" />
+        <div className="p-5 mt-[50px]">
+          <img src="public/solar-panel3.jpg" />
 
-        <div>
-          <p className="text-[28px] text-bold text-center mt-[35px]">
-            𝐑𝐄𝐒𝐈𝐃𝐄𝐍𝐓𝐈𝐀𝐋 𝐏𝐀𝐍𝐄𝐋𝐒 𝐈𝐍𝐒𝐓𝐀𝐋𝐋𝐀𝐓𝐈𝐎𝐍
-          </p>
-          <div className="p-4 text-center text-gray-400">
-            <p>
-              So far, there’ve been more than 4 million solar systems installed
-              on the rooftops across the US. Besides all the environmental
-              benefits that it brings, plus the savings on your monthly bills
-              for power consumption, it’s easy to see why so many people have
-              made the leap over. So if you've decided to join fiscally-savvy
-              and eco-friendly homeowners across the US, there are a few tips to
-              help you choose the right system and capacity for your home...
-              First of all, let's assess what is the current power consumption
-              for your home and which solar panel set will fit your situation
-              the best.
+          <div>
+            <p className="text-[28px] text-bold text-center mt-[35px]">
+              𝐑𝐄𝐒𝐈𝐃𝐄𝐍𝐓𝐈𝐀𝐋 𝐏𝐀𝐍𝐄𝐋𝐒 𝐈𝐍𝐒𝐓𝐀𝐋𝐋𝐀𝐓𝐈𝐎𝐍
             </p>
+            <div className="p-4 text-center text-gray-400">
+              <p>
+                So far, there’ve been more than 4 million solar systems
+                installed on the rooftops across the US. Besides all the
+                environmental benefits that it brings, plus the savings on your
+                monthly bills for power consumption, it’s easy to see why so
+                many people have made the leap over. So if you've decided to
+                join fiscally-savvy and eco-friendly homeowners across the US,
+                there are a few tips to help you choose the right system and
+                capacity for your home... First of all, let's assess what is the
+                current power consumption for your home and which solar panel
+                set will fit your situation the best.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="mt-[20px] ml-[115px]">
-        <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
-          𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
-        </button>
-      </div>
+        <div className="mt-[20px] ml-[115px]">
+          <NavLink to="/serviceprovider">
+            <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
+              𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+            </button>
+          </NavLink>
+        </div>
 
-      <div className="p-5 mt-[50px]">
-        <img src="public/solar-panel4.jpg" />
+        <div className="p-5 mt-[50px]">
+          <img src="public/solar-panel4.jpg" />
 
-        <div>
-          <p className="text-[28px] text-center mt-[35px]">
-            𝐄𝐍𝐄𝐑𝐆𝐘 𝐁𝐈𝐋𝐋𝐒 𝐒𝐀𝐕𝐈𝐍𝐆𝐒 𝐂𝐀𝐋𝐂𝐔𝐋𝐀𝐓𝐎𝐑
-          </p>
-          <div className="p-4 text-center text-gray-400">
-            <p>
-              We offer a whole range of energy efficiency tips, provided both
-              for small businesses and larger operations. At the end of the day,
-              this will help your company cut on expenses and will help reduce
-              the environmental impact of your business, converting it to an
-              eco-friendly one. On this page, you’ll be able to get a glimpse of
-              exactly how much you’ll be saving daily, monthly and yearly on
-              your power consumption bills after you’ll have a Green Tech’s
-              solar panel systems installed at your location...
+          <div>
+            <p className="text-[28px] text-center mt-[35px]">
+              𝐄𝐍𝐄𝐑𝐆𝐘 𝐁𝐈𝐋𝐋𝐒 𝐒𝐀𝐕𝐈𝐍𝐆𝐒 𝐂𝐀𝐋𝐂𝐔𝐋𝐀𝐓𝐎𝐑
             </p>
+            <div className="p-4 text-center text-gray-400">
+              <p>
+                We offer a whole range of energy efficiency tips, provided both
+                for small businesses and larger operations. At the end of the
+                day, this will help your company cut on expenses and will help
+                reduce the environmental impact of your business, converting it
+                to an eco-friendly one. On this page, you’ll be able to get a
+                glimpse of exactly how much you’ll be saving daily, monthly and
+                yearly on your power consumption bills after you’ll have a Green
+                Tech’s solar panel systems installed at your location...
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="mt-[20px] ml-[115px]">
-        <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
-          𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
-        </button>
-      </div>
+        <div className="mt-[20px] ml-[115px]">
+          <NavLink to="/serviceprovider">
+            <button className="pt-2 hover:shadow-md hover:shadow-black pb-2 pl-12 pr-12 border rounded-3xl text-[14px] bg-green-500 text-white hover:text-green-500 hover:bg-white duration-500 hover:translate-x-1">
+              𝐑𝐄𝐀𝐃 𝐌𝐎𝐑𝐄
+            </button>
+          </NavLink>
+        </div>
       </div>
     </div>
   );

@@ -30,6 +30,7 @@ import App18 from "./Product9/App18.jsx";
 import App19 from "./BuyProduct/App19.jsx";
 import App20 from "./cart/App20.jsx";
 import App21 from "./Auth/App21.jsx";
+import App22 from "./ServiceProvider/App22.jsx";
 
 // Create the router configuration
 const router = createBrowserRouter(
@@ -63,6 +64,7 @@ const router = createBrowserRouter(
       <Route path="Buy" element={<App19 />} />
       <Route path="cart" element={<App20 />} />
       <Route path="auth" element={<App21 />} />
+      <Route path="serviceprovider" element={<App22/>} />
     </Route>
   )
 );

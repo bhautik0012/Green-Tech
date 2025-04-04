@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes, faUser, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import {
   faFacebook,
@@ -9,59 +9,65 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 function Head1() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
-    <div className="lg:mt-[20px] lg:ml-[120px] md:mt-[20px] sm:mt-[15px]">
-      <div className="items-center justify-between lg:flex md:flex sm:flex">
+    <div className="container px-4 py-4 mx-auto sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <h1 className="lg:text-[35px] lg:font-semibold md:text-[30px] md:font-semibold sm:font-bold sm:text-[30px] sm:mt-[6px] md:mt-[5px]">
+          {/* Hamburger Menu Icon - visible on small and medium screens */}
+          <button 
+            onClick={toggleSidebar}
+            className="mr-4 text-green-800 "
+          >
+            <FontAwesomeIcon icon={faBars} size="lg" />
+          </button>
+          
+          <h1 className="text-2xl font-bold sm:text-3xl md:text-4xl">
             <span className="text-green-800">GREEN</span>TECH
           </h1>
         </div>
 
-        {/* Desktop Menu */}
-        <div className="items-center hidden lg:mr-[50px] lg:flex">
-         
-
-          <div className="flex gap-5 lg:mr-[20px]">
+        {/* Social Icons - visible on all screens */}
+        <div className="flex items-center">
+          <div className="flex gap-3 sm:gap-4 md:gap-5">
             <a
-              className="text-green-600 hover:text-green-500"
+              className="text-green-600 transition-all hover:text-green-500 hover:scale-110"
               href="https://www.facebook.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
             >
               <FontAwesomeIcon
-                className="w-[30px] h-[30px] transition-all cursor-pointer hover:scale-110"
+                className="w-6 h-6 sm:w-7 sm:h-7"
                 icon={faFacebook}
               />
             </a>
             <a
-              className="text-red-500 hover:text-red-600"
+              className="text-red-500 transition-all hover:text-red-600 hover:scale-110"
               href="https://www.youtube.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
             >
               <FontAwesomeIcon
-                className="w-[30px] h-[30px] transition-all cursor-pointer hover:scale-110"
+                className="w-6 h-6 sm:w-7 sm:h-7"
                 icon={faYoutube}
               />
             </a>
             <a
-              className="text-blue-500 hover:text-blue-600"
+              className="text-blue-500 transition-all hover:text-blue-600 hover:scale-110"
               href="https://www.linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
             >
               <FontAwesomeIcon
-                className="w-[30px] h-[30px] transition-all cursor-pointer hover:scale-110"
+                className="w-6 h-6 sm:w-7 sm:h-7"
                 icon={faLinkedin}
               />
             </a>
@@ -69,61 +75,52 @@ function Head1() {
         </div>
       </div>
 
-      <div className="sm:hidden md:block lg:hidden">
-        <div className="bg-zinc-900 lg:w-auto pb-[15px] pt-[15px] mt-[15px]  items-center">
-          <nav className="flex items-center gap-10 ml-[15px] ">
-            {[
-              "/",
-              "/about",
-              "/products",
-              "/service",
-              "/blog",
-              "/contacts",
-              "/cart",
-            ].map((path, index) => (
+      {/* Sidebar */}
+      {isSidebarOpen && (
+        <div className="fixed inset-0 z-50 overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-black bg-opacity-50" 
+            onClick={toggleSidebar}
+          ></div>
+          <div className="absolute inset-y-0 left-0 w-64 transition-transform duration-300 ease-in-out transform bg-white shadow-lg">
+            <div className="flex items-center justify-between p-4 border-b">
+              <h2 className="text-xl font-bold text-green-800">Dashboard</h2>
+              <button 
+                onClick={toggleSidebar} 
+                className="text-gray-500 hover:text-gray-700 focus:outline-none"
+              >
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+            </div>
+            <div className="p-4">
               <NavLink
-                key={index}
-                to={path}
+                to="/viewdata"
+                onClick={toggleSidebar}
                 className={({ isActive }) =>
-                  `font-semibold text-lg duration-500 cursor-pointer ${
-                    isActive ? "text-white" : "text-gray-400 hover:text-white"
+                  `flex items-center p-3 rounded-lg mb-2 transition-colors ${
+                    isActive ? "bg-green-100 text-green-800" : "hover:bg-gray-100"
                   }`
                 }
               >
-                {path.slice(1).toUpperCase() || "HOME"}
+                <FontAwesomeIcon icon={faUser} className="mr-3" />
+                User Data
               </NavLink>
-            ))}
-          </nav>
-        </div>
-      </div>
-
-      <div className="sm:block md:hidden lg:hidden">
-        <div className="bg-zinc-900 lg:w-auto pb-[15px] pt-[15px] mt-[15px]  items-center">
-          <nav className="flex items-center gap-5 ml-2">
-            {[
-              "/",
-              "/about",
-              "/products",
-              "/service",
-              "/blog",
-              "/contacts",
-              "/cart",
-            ].map((path, index) => (
               <NavLink
-                key={index}
-                to={path}
+                to="/add-product"
+                onClick={toggleSidebar}
                 className={({ isActive }) =>
-                  ` font-extrabold duration-500 text-[10px] cursor-pointer ${
-                    isActive ? "text-white" : "text-gray-400 hover:text-white"
+                  `flex items-center p-3 rounded-lg transition-colors ${
+                    isActive ? "bg-green-100 text-green-800" : "hover:bg-gray-100"
                   }`
                 }
               >
-                {path.slice(1).toUpperCase() || "HOME"}
+                <FontAwesomeIcon icon={faPlus} className="mr-3" />
+                Add Product
               </NavLink>
-            ))}
-          </nav>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

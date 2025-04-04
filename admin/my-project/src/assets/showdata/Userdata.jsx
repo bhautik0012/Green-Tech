@@ -9,7 +9,7 @@ function Userdata() {
   return (
    <>
      <Head1/>
-     <Navbar/>
+     {/* <Navbar/> */}
      <Viewdata/>
    </>
   )
