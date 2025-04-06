@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes, faUser, faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faTimes,
+  faUser,
+  faPlus,
+  faBox, // or faList
+} from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import {
   faFacebook,
@@ -16,17 +22,20 @@ function Head1() {
   };
 
   return (
+    <div className=" bg-fixed bg-center bg-cover h-[100px]"
+    style={{ 
+      backgroundImage: "url('./public/admin1.jpg')",
+      backgroundColor: "rgba(0, 0, 0, 0.3)",
+      backgroundBlendMode: "multiply"
+    }}>
     <div className="container px-4 py-4 mx-auto sm:px-6 lg:px-8">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           {/* Hamburger Menu Icon - visible on small and medium screens */}
-          <button 
-            onClick={toggleSidebar}
-            className="mr-4 text-green-800 "
-          >
+          <button onClick={toggleSidebar} className="mr-4 text-green-800 ">
             <FontAwesomeIcon icon={faBars} size="lg" />
           </button>
-          
+
           <h1 className="text-2xl font-bold sm:text-3xl md:text-4xl">
             <span className="text-green-800">GREEN</span>TECH
           </h1>
@@ -78,15 +87,15 @@ function Head1() {
       {/* Sidebar */}
       {isSidebarOpen && (
         <div className="fixed inset-0 z-50 overflow-hidden">
-          <div 
-            className="absolute inset-0 bg-black bg-opacity-50" 
+          <div
+            className="absolute inset-0 bg-black bg-opacity-50"
             onClick={toggleSidebar}
           ></div>
           <div className="absolute inset-y-0 left-0 w-64 transition-transform duration-300 ease-in-out transform bg-white shadow-lg">
             <div className="flex items-center justify-between p-4 border-b">
               <h2 className="text-xl font-bold text-green-800">Dashboard</h2>
-              <button 
-                onClick={toggleSidebar} 
+              <button
+                onClick={toggleSidebar}
                 className="text-gray-500 hover:text-gray-700 focus:outline-none"
               >
                 <FontAwesomeIcon icon={faTimes} />
@@ -98,7 +107,9 @@ function Head1() {
                 onClick={toggleSidebar}
                 className={({ isActive }) =>
                   `flex items-center p-3 rounded-lg mb-2 transition-colors ${
-                    isActive ? "bg-green-100 text-green-800" : "hover:bg-gray-100"
+                    isActive
+                      ? "bg-green-100 text-green-800"
+                      : "hover:bg-gray-100"
                   }`
                 }
               >
@@ -110,7 +121,9 @@ function Head1() {
                 onClick={toggleSidebar}
                 className={({ isActive }) =>
                   `flex items-center p-3 rounded-lg transition-colors ${
-                    isActive ? "bg-green-100 text-green-800" : "hover:bg-gray-100"
+                    isActive
+                      ? "bg-green-100 text-green-800"
+                      : "hover:bg-gray-100"
                   }`
                 }
               >
@@ -123,11 +136,13 @@ function Head1() {
                 onClick={toggleSidebar}
                 className={({ isActive }) =>
                   `flex items-center p-3 rounded-lg transition-colors ${
-                    isActive ? "bg-green-100 text-green-800" : "hover:bg-gray-100"
+                    isActive
+                      ? "bg-green-100 text-green-800"
+                      : "hover:bg-gray-100"
                   }`
                 }
               >
-                <FontAwesomeIcon className="mr-3" />
+                <FontAwesomeIcon icon={faBox} className="mr-3" />
                 Show Product
               </NavLink>
             </div>
@@ -135,7 +150,9 @@ function Head1() {
         </div>
       )}
     </div>
+    </div>
   );
 }
 
 export default Head1;
+

@@ -7,6 +7,7 @@ function Darshboard() {
   return (
     <>
         <Head1/>
+        <hr className='p-0 m-0 border-black'/>
         <AddProducts/>
         
     </>

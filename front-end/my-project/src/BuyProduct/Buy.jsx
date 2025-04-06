@@ -1,5 +1,6 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function Buy() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -7,53 +8,25 @@ function Buy() {
   const [quantity, setQuantity] = useState(1);
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
+  const [lstUser, setLstUser] = useState([]);
 
-  const products = [
-  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("http://localhost:3001/product/get", {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        console.log("===========response ============", res.data);
+        setLstUser(res.data.data);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      }
+    };
 
-    {
-            id: 1,
-            name: "𝐋𝐔𝐌 𝟐𝟒𝟓𝟒𝟓𝐌-𝐃𝐂𝐑 (𝐁𝐢𝐟𝐚𝐜𝐢𝐚𝐥)",
-            price: 25250.0,
-            image: "public/Solarplat1.jpg",
-          },
-          {
-            id: 2,
-            name: "𝟓𝟓𝟎𝐖/𝟐𝟒𝐕 𝐌𝐨𝐧𝐨 𝐏𝐞𝐫𝐜 𝐇𝐚𝐥𝐟𝐜𝐮𝐭 𝐒𝐨𝐥𝐚𝐫 𝐏𝐚𝐧𝐞𝐥",
-            price: 17000.0,
-            image: "public/Solarplat2.jpg",
-          },
-          {
-            id: 3,
-            name: " 𝟑𝟑𝟓𝐖/𝟐𝟒𝐕 𝐏𝐨𝐥𝐲𝐜𝐫𝐲𝐬𝐭𝐚𝐥𝐥𝐢𝐧𝐞 𝐒𝐨𝐥𝐚𝐫 𝐏𝐚𝐧𝐞𝐥",
-            price: 24000.0,
-            image: "public/Solarplat3.jpg",
-          },
-          {
-            id: 4,
-            name: "  𝟏𝟕𝟎𝐖/𝟏𝟐𝐕 𝐏𝐨𝐥𝐲𝐜𝐫𝐲𝐬𝐭𝐚𝐥𝐥𝐢𝐧𝐞 𝐒𝐨𝐥𝐚𝐫 𝐏𝐚𝐧𝐞𝐥",
-            price: 6500.0,
-            image: "public/Solarplat4.jpg",
-          },
-          {
-            id: 5,
-            name: "𝐋𝐔𝐌 𝟐𝟒𝟓𝟓𝟎𝐌 (𝐁𝐢𝐟𝐚𝐜𝐢𝐚𝐥)- 𝐍𝐨𝐧 𝐃𝐂𝐑",
-            price: 18000.0,
-            image: "public/Solarplat5.jpg",
-          },
-          {
-            id: 6,
-            name: "𝐋𝐔𝐌 𝟐𝟒𝟓𝟒𝟎𝐌-𝐃𝐂𝐑 (𝐌𝐨𝐧𝐨-𝐅𝐚𝐜𝐢𝐚𝐥)",
-            price: 24000.0,
-            image: "public/Solarplat6.jpg",
-          },
-          {
-            id: 7,
-            name: "  𝐋𝐔𝐌 𝟐𝟒𝟓𝟒𝟎𝐌- 𝐃𝐂𝐑 (𝐁𝐢𝐟𝐚𝐜𝐢𝐚𝐥)",
-            price: 25000.0,
-            image: "public/Solarplat7.jpg",
-          },
-  ];
+    fetchData();
+  }, []);
 
   const openModal = (product) => {
     setSelectedProduct(product);
@@ -73,12 +46,11 @@ function Buy() {
   };
 
   const goToCartPage = () => {
-    navigate("/cart", { state: { cart } }); 
+    navigate("/cart", { state: { cart } });
   };
 
   return (
     <div className="">
-    
       <div className="fixed bottom-4 right-4">
         <button
           onClick={goToCartPage}
@@ -88,33 +60,35 @@ function Buy() {
         </button>
       </div>
 
-      
       <div className="flex flex-wrap justify-center gap-24">
-        {products.map((product) => (
-          <div key={product.id} className="mt-[50px]">
-            <div className="border w-[330px] rounded-md shadow-lg shadow-black h-[430px]">
-              <img
-                className="w-[340px] h-[240px] rounded-s-lg"
-                src={product.image}
-                alt={product.name}
-              />
-              <hr className="border" />
-              <p className="text-[16px] ml-[20px] mt-[20px]">{product.name}</p>
-              <p className="text-[18px] ml-[20px] mt-[10px]">
-                ₹ {product.price.toLocaleString("en-IN")} (𝐈𝐧𝐜𝐥𝐮𝐬𝐢𝐯𝐞 𝐨𝐟 𝐚𝐥𝐥
-                𝐭𝐚𝐱𝐞𝐬)
-              </p>
-              <div className="ml-[120px] mt-[25px] ">
-                <button
-                  onClick={() => openModal(product)}
-                  className="pt-2 pb-2 pl-4 pr-4 transition-all duration-100 bg-green-400 border rounded-lg cursor-pointer hover:text-gray-600 hover:scale-105"
-                >
-                  𝐁𝐮𝐲 𝐍𝐨𝐰
-                </button>
+        {lstUser &&
+          lstUser.map((product) => (
+            <div key={product.id} className="mt-[50px]">
+              <div className="border w-[330px] rounded-md shadow-lg shadow-black h-[430px]">
+                <img
+                  className="w-[340px] h-[240px] rounded-s-lg"
+                  src={product.solarImage}
+                  alt={product.productName}
+                />
+                <hr className="border" />
+                <p className="text-[16px] ml-[20px] mt-[20px]">
+                  {product.productName}
+                </p>
+                <p className="text-[18px] ml-[20px] mt-[10px]">
+                  ₹ {product.price.toLocaleString("en-IN")} (𝐈𝐧𝐜𝐥𝐮𝐬𝐢𝐯𝐞 𝐨𝐟 𝐚𝐥𝐥
+                  𝐭𝐚𝐱𝐞𝐬)
+                </p>
+                <div className="ml-[120px] mt-[25px] ">
+                  <button
+                    onClick={() => openModal(product)}
+                    className="pt-2 pb-2 pl-4 pr-4 transition-all duration-100 bg-green-400 border rounded-lg cursor-pointer hover:text-gray-600 hover:scale-105"
+                  >
+                    𝐁𝐮𝐲 𝐍𝐨𝐰
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
 
       {/* Product Modal */}
@@ -123,7 +97,7 @@ function Buy() {
           <div className="bg-white rounded-lg p-6 w-[400px] shadow-lg relative">
             <h2 className="mb-4 text-xl font-bold">{selectedProduct.name}</h2>
             <img
-              src={selectedProduct.image}
+              src={selectedProduct.solarImage}
               alt={selectedProduct.name}
               className="w-full h-[150px] object-cover rounded mb-4"
             />
@@ -173,7 +147,7 @@ function Buy() {
             </div>
           </div>
         </div>
-      )} 
+      )}
     </div>
   );
 }

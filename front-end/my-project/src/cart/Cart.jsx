@@ -120,8 +120,8 @@ function Cart() {
               className="flex items-center justify-between p-4 mb-4 border rounded-lg"
             >
               <img
-                src={item.image}
-                alt={item.name}
+                src={item.solarImage}
+                alt={item.productName}
                 className="object-cover w-24 h-24 rounded-lg"
               />
               <div className="flex-1 ml-4">

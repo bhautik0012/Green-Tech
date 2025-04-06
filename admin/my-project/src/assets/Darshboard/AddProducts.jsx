@@ -1,212 +1,10 @@
-// import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import axios from "axios";
-
-// const AddProducts = () => {
-//   const [products, setProducts] = useState([]);
-//   const [isAddFormOpen, setIsAddFormOpen] = useState(false);
-//   const [newProduct, setNewProduct] = useState({
-//     solarImage: "",
-//     productName: "",
-//     price: 0,
-//   });
-
-//   // Fetch products from API
-//   const fetchProducts = async () => {
-//     try {
-//       const response = await axios.get(
-//         "https://solar-api-d41x.onrender.com/product/add"
-//       );
-//       setProducts(response.data);
-//     } catch (error) {
-//       console.error("Error fetching products:", error);
-//     }
-//   };
-
-//   // Add new product
-//   const handleAddProduct = async (e) => {
-//     e.preventDefault();
-//     try {
-//       await axios.post(
-//         "https://solar-api-d41x.onrender.com/product/add",
-//         newProduct
-//       );
-//       fetchProducts();
-//       setIsAddFormOpen(false);
-//       setNewProduct({
-//         solarImage: "",
-//         productName: "",
-//         price: 0,
-//       });
-//     } catch (error) {
-//       console.error("Error adding product:", error);
-//     }
-//   };
-
-//   // Delete product
-//   const handleDeleteProduct = async (id) => {
-//     try {
-//       await axios.delete(`https://your-api-endpoint/products/${id}`);
-//       fetchProducts();
-//     } catch (error) {
-//       console.error("Error deleting product:", error);
-//     }
-//   };
-
-//   return (
-//     <div className="container p-4 mx-auto">
-//       <div className="flex items-center justify-between mb-8">
-//         <h1 className="text-2xl font-bold">Product Dashboard</h1>
-//         <button
-//           onClick={() => setIsAddFormOpen(true)}
-//           className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
-//         >
-//           Add New Product
-//         </button>
-//       </div>
-
-//       {/* Add Product Form Modal */}
-//       {isAddFormOpen && (
-//         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-//           <div className="w-full max-w-md p-6 bg-white rounded-lg">
-//             <h2 className="mb-4 text-xl font-bold">Add New Product</h2>
-//             <form onSubmit={handleAddProduct}>
-//               <div className="mb-4">
-//                 <label className="block mb-2">Image URL</label>
-//                 <input
-//                   type="file"
-//                   value={newProduct.solarImage}
-//                   onChange={(e) =>
-//                     setNewProduct({ ...newProduct, solarImage: e.target.value })
-//                   }
-//                   className="w-full p-2 border rounded"
-//                 />
-//               </div>
-//               <div className="mb-4">
-//                 <label className="block mb-2">Product Name</label>
-//                 <input
-//                   type="text"
-//                   value={newProduct.productName}
-//                   onChange={(e) =>
-//                     setNewProduct({
-//                       ...newProduct,
-//                       productName: e.target.value,
-//                     })
-//                   }
-//                   className="w-full p-2 border rounded"
-//                   required
-//                 />
-//               </div>
-//               <div className="mb-4">
-//                 <label className="block mb-2">Price</label>
-//                 <input
-//                   type="number"
-//                   value={newProduct.price}
-//                   onChange={(e) =>
-//                     setNewProduct({
-//                       ...newProduct,
-//                       price: parseFloat(e.target.value),
-//                     })
-//                   }
-//                   className="w-full p-2 border rounded"
-//                   required
-//                   min="0"
-//                   step="0.01"
-//                 />
-//               </div>
-
-//               <div className="flex justify-end gap-4">
-//                 <button
-//                   type="button"
-//                   onClick={() => setIsAddFormOpen(false)}
-//                   className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
-//                 >
-//                   Cancel
-//                 </button>
-//                 <button
-//                   type="submit"
-//                   className="px-4 py-2 text-white bg-green-500 rounded hover:bg-green-600"
-//                 >
-//                   Add Product
-//                 </button>
-//               </div>
-//             </form>
-//           </div>
-//         </div>
-//       )}
-
-//       {/* Products Table */}
-//       <div className="overflow-x-auto">
-//         <table className="min-w-full bg-white border">
-//           <thead>
-//             <tr className="bg-gray-100">
-//               <th className="px-4 py-2 border">ID</th>
-//               <th className="px-4 py-2 border">Image</th>
-//               <th className="px-4 py-2 border">Name</th>
-//               <th className="px-4 py-2 border">Price</th>
-//               {/* <th className="px-4 py-2 border">Stock</th> */}
-//               <th className="px-4 py-2 border">Actions</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {products.map((product) => (
-//               <tr key={product.id} className="hover:bg-gray-50">
-//                 <td className="px-4 py-2 border">{product.id}</td>
-//                 <td className="px-4 py-2 border">
-//                   <img
-//                     src={product.image}
-//                     alt={product.name}
-//                     className="object-cover w-16 h-16"
-//                   />
-//                 </td>
-//                 <td className="px-4 py-2 border">{product.name}</td>
-//                 <td className="px-4 py-2 border">
-//                   ₹{product.price.toFixed(2)}
-//                 </td>
-
-//                 <td className="px-4 py-2 border">
-//                   <div className="flex gap-2">
-//                     <button className="px-3 py-1 text-white bg-blue-500 rounded hover:bg-blue-600">
-//                       Edit
-//                     </button>
-//                     <button
-//                       onClick={() => handleDeleteProduct(product.id)}
-//                       className="px-3 py-1 text-white bg-red-500 rounded hover:bg-red-600"
-//                     >
-//                       Delete
-//                     </button>
-//                   </div>
-//                 </td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AddProducts;
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const AddProducts = () => {
   const navigate = useNavigate();
-  const [solarImage, setSolarImage] = useState(null); // store file
+  const [solarImage, setSolarImage] = useState(null);
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
 
@@ -229,7 +27,6 @@ const AddProducts = () => {
       console.log(response.data.status);
 
       navigate("/productshow");
-      // Reset form
       setSolarImage(null);
       setProductName("");
       setPrice("");
@@ -239,53 +36,112 @@ const AddProducts = () => {
   };
 
   return (
-    <div>
-      <div className="lg:mt-[0px] pt-20 lg:ml-[580px] md:mt-[80px] md:ml-[200px] sm:ml-[45px] sm:mt-[50px]">
-        <div className="lg:pl-6 border rounded-2xl backdrop-blur-sm border-black lg:pt-10 lg:pr-5 md:pl-6 md:pt-10 md:pr-5 sm:p-6 lg:w-[375px] lg:h-[400px] md:w-[367px] md:h-[400px] sm:w-[300px]">
-          <div className="font-bold text-cyan-50 text-[30px] mb-[30px] me-8 text-center">
-            <h2>Add Product</h2>
+    <div 
+      className="min-h-screen bg-fixed bg-center bg-cover"
+      style={{ 
+        backgroundImage: "url('./public/admin1.jpg')",
+        // backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundBlendMode: "multiply"
+      }}
+    >
+      <div className="flex items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8">
+        <div className="w-full max-w-md p-8 space-y-8 bg-white shadow-2xl bg-opacity-90 rounded-xl backdrop-blur-sm">
+          <div className="text-center">
+            <h2 className="text-3xl font-extrabold text-gray-900">
+              Add New Product
+            </h2>
+            <p className="mt-2 text-sm text-gray-600">
+              Fill in the details of your new product
+            </p>
           </div>
 
-          <div>
-            <input
-              className="border-black p-1 rounded placeholder:text-[19px] lg:w-[300px] md:w-[300px] sm:w-[230px] border-[1px] outline-none border-l-transparent border-r-transparent border-t-transparent"
-              type="file"
-              onChange={(e) => setSolarImage(e.target.files[0])}
-              required
-            />
-          </div>
-          <div>
-            <input
-              className="border-black p-1 rounded lg:w-[300px] md:w-[300px] sm:w-[230px] placeholder:text-[19px] mt-[30px] border-[1px] outline-none border-l-transparent border-r-transparent border-t-transparent"
-              type="text"
-              value={productName}
-              onChange={(e) => setProductName(e.target.value)}
-              placeholder="Product Name"
-              required
-            />
-          </div>
-
-          <div>
-            <input
-              className="border-black p-1 rounded lg:w-[300px] md:w-[300px] sm:w-[230px] placeholder:text-[19px] mt-[30px] border-[1px] outline-none border-l-transparent border-r-transparent border-t-transparent"
-              type="number"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-              placeholder="Price"
-              required
-            />
-          </div>
-
-          <div className="lg:flex md:flex sm:flex">
+          <div className="space-y-6">
             <div>
-              
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Product Image
+              </label>
+              <div className="flex items-center justify-center w-full">
+                <label className="flex flex-col w-full transition-all duration-300 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50">
+                  <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                    {solarImage ? (
+                      <p className="text-sm text-gray-500">
+                        {solarImage.name}
+                      </p>
+                    ) : (
+                      <>
+                        <svg
+                          className="w-10 h-10 mb-3 text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                          ></path>
+                        </svg>
+                        <p className="text-sm text-gray-500">
+                          <span className="font-semibold">Click to upload</span> or drag and drop
+                        </p>
+                      </>
+                    )}
+                  </div>
+                  <input
+                    type="file"
+                    className="opacity-0"
+                    onChange={(e) => setSolarImage(e.target.files[0])}
+                    required
+                  />
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Product Name
+              </label>
+              <input
+                className="w-full px-4 py-2 transition-all border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                type="text"
+                value={productName}
+                onChange={(e) => setProductName(e.target.value)}
+                placeholder="Enter product name"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block mb-1 text-sm font-medium text-gray-700">
+                Price
+              </label>
+              <div className="relative rounded-md shadow-sm">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <span className="text-gray-500 sm:text-sm"></span>
+                </div>
+                <input
+                  type="number"
+                  className="block w-full py-2 pr-12 transition-all border border-gray-300 rounded-md pl-7 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  placeholder="0.00"
+                  required
+                />
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <span className="text-gray-500 sm:text-sm">IND</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
               <button
-                className="lg:pt-2 lg:pb-2 text-cyan-50 lg:pl-3 lg:pr-3 border border-white rounded-md ml-[30px] mt-[20px] sm:pt-2 sm:pb-2 sm:pl-3 sm:pr-3 hover:bg-green-400 duration-500 hover:border-green-400 hover:text-white font-bold"
                 onClick={add}
+                className="relative flex justify-center w-full px-4 py-3 text-sm font-medium text-white transition-colors duration-300 bg-green-600 border border-transparent rounded-md group hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               >
                 Add Product
               </button>
-             
             </div>
           </div>
         </div>
@@ -295,4 +151,3 @@ const AddProducts = () => {
 };
 
 export default AddProducts;
-
