@@ -20,7 +20,7 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Handle scroll behavior
+ 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`shadow-lg bg-zinc-900 sticky top-0 transition-transform duration-300 z-50 ${
+      className={`shadow-lg sm:hidden md:hidden lg:block  bg-zinc-900 sticky top-0 transition-transform duration-300 z-50 ${
         isScrollingDown ? "-translate-y-full" : "translate-y-0"
       }`}
     >

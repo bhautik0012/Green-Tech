@@ -32,7 +32,7 @@ function Head1() {
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           {/* Hamburger Menu Icon - visible on small and medium screens */}
-          <button onClick={toggleSidebar} className="mr-4 text-green-800 ">
+          <button onClick={toggleSidebar} className="mr-4 text-green-900 ">
             <FontAwesomeIcon icon={faBars} size="lg" />
           </button>
 
