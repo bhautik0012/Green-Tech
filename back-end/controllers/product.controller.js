@@ -3,7 +3,7 @@ const { ApiError } = require("../utils/ApiError.js");
 const { uploadOnCloudinary } = require("../utils/cloudinary.js");
 const { ApiResponse } = require("../utils/ApiResponse.js");
 const mongoose = require("mongoose");
-const { Product } = require("../model/product.model.js");
+const { Product } = require("../models/product.model.js");
 
 const createProduct = asyncHandler(async (req, res) => {
   const { productName, price } = req.body;
@@ -13,10 +13,13 @@ const createProduct = asyncHandler(async (req, res) => {
   }
 
   const solarLocalPath = req.file?.path;
+  
+  console.log("=====solar=======",solarLocalPath)
 
   if (!solarLocalPath) {
     throw new ApiError(400, "solar file is required");
   }
+
 
   const solarImage = await uploadOnCloudinary(solarLocalPath);
 

@@ -35,7 +35,7 @@ const Register = () => {
               alert("enter city");
             } else {
               axios
-                .post("https://solar-api-d41x.onrender.com", data, {
+                .post("http://localhost:3001/user/register", data, {
                   headers: {
                     "Content-Type": "application/json",
                     "Access-Control-Allow-Origin": "*",

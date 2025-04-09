@@ -5,6 +5,7 @@ import Adminlogin from "./Adminlogin";
 import Userdata from "./assets/showdata/Userdata";
 import Darshboard from "./assets/Darshboard/Darshboard";
 import AddProductshow from "./assets/Addproduct/AddProductshow";
+import Order from "./assets/OrderCheck/Order";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/add-product" element={<Darshboard/>}></Route>
           <Route path="/updatedata/:id" element={<Update />}></Route>
           <Route path="/productshow" element={<AddProductshow/>}></Route>
+          <Route path="/check" element={<Order/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

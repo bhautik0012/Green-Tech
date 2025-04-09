@@ -1,13 +1,31 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { QRCode } from "react-qr-code";
+import axios from "axios";
 
 function Cart() {
   const location = useLocation();
   const cart = location.state?.cart || [];
   const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
+  // Individual address state variables
+  const [addressLine, setAddressLine] = useState("");
+  const [email, setEmail] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("India");
+  const [pincode, setPincode] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const [solarImage, setSolarImage] = useState(null);
+  const [productName, setProductName] = useState("");
+  const [price, setPrice] = useState("");
+  const [quantity, setQuantity] = useState("");
+
   const [isProcessing, setIsProcessing] = useState(false);
+  console.log("========Model view ===========",isProcessing);
+  
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
   const [cardDetails, setCardDetails] = useState({
     cardNumber: "",
@@ -20,7 +38,8 @@ function Cart() {
     accountNumber: "",
   });
   const [errors, setErrors] = useState({});
-  const [showSuccessModel, setShowSuccessModel] = useState(false); // State for success model
+  const [showSuccessModel, setShowSuccessModel] = useState(false);
+  const [addressErrors, setAddressErrors] = useState({});
 
   const calculateTotalCartPrice = () => {
     return cart
@@ -28,10 +47,17 @@ function Cart() {
       .toFixed(2);
   };
 
-  const handlePayment = () => {
-    if (cart.length === 0) return;
-    setShowModal(true);
-  };
+
+
+
+
+
+
+  
+  // const handlePayment = () => {
+  //   if (cart.length === 0) return;
+  //   setShowModal(true);
+  // };
 
   const validateCardDetails = () => {
     const newErrors = {};
@@ -47,6 +73,7 @@ function Cart() {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+
 
   const validateUpiId = () => {
     if (!upiId || !/^[\w.-]+@[\w.-]+$/.test(upiId)) {
@@ -68,7 +95,117 @@ function Cart() {
     return Object.keys(newErrors).length === 0;
   };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  const validateAddress = () => {
+    const newErrors = {};
+    if (!addressLine.trim()) newErrors.addressLine = "Address is required";
+    if (!city.trim()) newErrors.city = "City is required";
+    if (!state.trim()) newErrors.state = "State is required";
+    if (!pincode || !/^\d{6}$/.test(pincode))
+      newErrors.pincode = "Valid 6-digit pincode required";
+    if (!phoneNumber || !/^\d{10}$/.test(phoneNumber))
+      newErrors.phoneNumber = "Valid 10-digit phone number required";
+
+    setAddressErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handlePayment = () => {
+    if (cart.length === 0) return;
+
+    if (!validateAddress()) {
+      const firstErrorField = document.querySelector(".border-red-500");
+      if (firstErrorField) {
+        firstErrorField.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return;
+    }
+
+    setShowModal(true);
+  };
+
+  // ... (keep all other existing functions the same)
+
   const confirmPayment = () => {
+    const token = localStorage.getItem("token");
+    console.log("token", token);
+
+    console.log("cart", cart);
+
+    const orderItems = cart.map((item) => {
+      const {
+        productName = "",
+        price = 0,
+        quantity = 0,
+        solarImage,
+        _id,
+      } = item;
+      return {
+        name: productName,
+        price: price,
+        quantity: quantity,
+        image: solarImage,
+        product: _id,
+      };
+    });
+
+    const data = {
+      shippingInfo: {
+        address: addressLine,
+        city: city,
+        state: state,
+        country: country,
+        pinCode: pincode,
+        phoneNo: phoneNumber,
+      },
+      orderItems: orderItems,
+    };
+    console.log("============token =============", token);
+
+    axios
+      .post("http://localhost:3001/api/v1/order/new", data, {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        // Reset form after submission
+        setAddressLine("");
+        setEmail("");
+        setState("");
+        setCountry("India");
+        setPincode("");
+        setCity("");
+        setPhoneNumber("");
+      });
+
     if (!selectedPaymentMethod) {
       alert("Please select a payment method.");
       return;
@@ -91,20 +228,18 @@ function Cart() {
       return;
     }
 
-    setIsProcessing(true); // Show processing modal
-    setShowModal(false); // Hide the payment method selection modal
+    setIsProcessing(true);
+    setShowModal(false);
 
-    // Simulate payment processing for 4 seconds
     setTimeout(() => {
-      setIsProcessing(false); // Hide processing modal
-      setShowSuccessModel(true); // Show success model
+      setIsProcessing(false);
+      setShowSuccessModel(true);
 
-      // Hide the success model after 4 seconds
       setTimeout(() => {
         setShowSuccessModel(false);
-        setIsPaymentSuccessful(true); // Mark payment as successful
-      }, 4000); // Success model stays for 4 seconds
-    }, 4000); // Processing modal stays for 4 seconds
+        setIsPaymentSuccessful(true);
+      }, 4000);
+    }, 4000);
   };
 
   return (
@@ -113,54 +248,167 @@ function Cart() {
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <ul>
-          {cart.map((item, index) => (
-            <li
-              key={index}
-              className="flex items-center justify-between p-4 mb-4 border rounded-lg"
-            >
-              <img
-                src={item.solarImage}
-                alt={item.productName}
-                className="object-cover w-24 h-24 rounded-lg"
-              />
-              <div className="flex-1 ml-4">
-                <p className="text-lg font-semibold">{item.name}</p>
-                <p className="text-gray-600">Quantity: {item.quantity}</p>
-              </div>
-              <p className="text-lg font-semibold">
-                ₹ {(item.price * item.quantity).toFixed(2)}
-              </p>
-            </li>
-          ))}
-        </ul>
-      )}
-      <hr className="my-4" />
-      <div className="flex items-center justify-between">
-        <p className="text-lg font-semibold">
-          Total: ₹ {calculateTotalCartPrice()}
-        </p>
-        <button
-          onClick={handlePayment}
-          className={`px-4 py-2 text-white rounded ${
-            cart.length === 0 || isPaymentSuccessful
-              ? isPaymentSuccessful
-                ? "bg-green-500 cursor-not-allowed"
-                : "bg-gray-400 cursor-not-allowed"
-              : "bg-blue-500 hover:bg-blue-600"
-          }`}
-          disabled={cart.length === 0 || isPaymentSuccessful}
-        >
-          {isPaymentSuccessful ? "Payment Successful" : "Pay Now"}
-        </button>
-      </div>
+        <>
+          <ul>
+            {cart.map((item, index) => (
+              <li
+                key={index}
+                className="flex items-center justify-between p-4 mb-4 border rounded-lg"
+              >
+                <img
+                  src={item.solarImage}
+                  alt={item.productName}
+                  className="object-cover w-24 h-24 rounded-lg"
+                />
+                <div className="flex-1 ml-4">
+                  <p className="text-lg font-semibold">{item.name}</p>
+                  <p className="text-gray-600">Quantity: {item.quantity}</p>
+                </div>
+                <p className="text-lg font-semibold">
+                  ₹ {(item.price * item.quantity).toFixed(2)}
+                </p>
+              </li>
+            ))}
+          </ul>
 
+          {/* Shipping Address Form */}
+          <div className="p-4 mt-6 border rounded-lg">
+            <h3 className="mb-4 text-lg font-semibold">Shipping Address</h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div>
+                <label className="block mb-1 text-sm font-medium">
+                  Phone Number*
+                </label>
+                <input
+                  type="text"
+                  className={`w-full p-2 border rounded-lg ${
+                    addressErrors.phoneNumber ? "border-red-500" : ""
+                  }`}
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                />
+                {addressErrors.phoneNumber && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {addressErrors.phoneNumber}
+                  </p>
+                )}
+              </div>
+              <div className="md:col-span-2">
+                <label className="block mb-1 text-sm font-medium">
+                  Address*
+                </label>
+                <input
+                  type="text"
+                  className={`w-full p-2 border rounded-lg ${
+                    addressErrors.addressLine ? "border-red-500" : ""
+                  }`}
+                  value={addressLine}
+                  onChange={(e) => setAddressLine(e.target.value)}
+                />
+                {addressErrors.addressLine && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {addressErrors.addressLine}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label className="block mb-1 text-sm font-medium">City*</label>
+                <input
+                  type="text"
+                  className={`w-full p-2 border rounded-lg ${
+                    addressErrors.city ? "border-red-500" : ""
+                  }`}
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                />
+                {addressErrors.city && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {addressErrors.city}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label className="block mb-1 text-sm font-medium">State*</label>
+                <input
+                  type="text"
+                  className={`w-full p-2 border rounded-lg ${
+                    addressErrors.state ? "border-red-500" : ""
+                  }`}
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
+                />
+                {addressErrors.state && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {addressErrors.state}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label className="block mb-1 text-sm font-medium">
+                  Pincode*
+                </label>
+                <input
+                  type="text"
+                  className={`w-full p-2 border rounded-lg ${
+                    addressErrors.pincode ? "border-red-500" : ""
+                  }`}
+                  value={pincode}
+                  onChange={(e) => setPincode(e.target.value)}
+                />
+                {addressErrors.pincode && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {addressErrors.pincode}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label className="block mb-1 text-sm font-medium">
+                  Country
+                </label>
+                <select
+                  className="w-full p-2 border rounded-lg"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                >
+                  <option value="India">India</option>
+                  <option value="USA">United States</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <hr className="my-4" />
+          <div className="flex items-center justify-between">
+            <p className="text-lg font-semibold">
+              Total: ₹ {calculateTotalCartPrice()}
+            </p>
+            <button
+              onClick={handlePayment}
+              className={`px-4 py-2 text-white rounded ${
+                cart.length === 0 || isPaymentSuccessful
+                  ? isPaymentSuccessful
+                    ? "bg-green-500 cursor-not-allowed"
+                    : "bg-gray-400 cursor-not-allowed"
+                  : "bg-blue-500 hover:bg-blue-600"
+              }`}
+              disabled={cart.length === 0 || isPaymentSuccessful}
+            >
+              {isPaymentSuccessful ? "Payment Successful" : "Pay Now"}
+            </button>
+          </div>
+        </>
+      )}
+
+      {/* Payment Modal */}
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="w-full max-w-3xl p-6 bg-white rounded-lg max-h-[90vh] overflow-y-auto">
             <h2 className="mb-4 text-2xl font-bold">Select Payment Method</h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {/* Payment Options */}
+              {/* Payment options */}
               <div>
                 <div className="p-4 border rounded-lg">
                   <h3 className="mb-4 text-lg font-semibold">
@@ -210,16 +458,51 @@ function Cart() {
               {/* Order Summary */}
               <div className="p-4 border rounded-lg">
                 <h3 className="mb-4 text-lg font-semibold">Order Summary</h3>
-                <ul>
+                <div className="p-3 mb-4 rounded-lg bg-gray-50">
+                  <h4 className="font-medium">Shipping to:</h4>
+                  <p>{addressLine}</p>
+                  <p>
+                    {city}, {state} - {pincode}
+                  </p>
+                  <p>{country}</p>
+                  <p>Phone: {phoneNumber}</p>
+                </div>
+
+                <h4 className="mb-2 font-medium">Products:</h4>
+                <div className="overflow-y-auto max-h-48">
                   {cart.map((item, index) => (
-                    <li key={index} className="flex justify-between mb-2">
-                      <span>
-                        {item.name} (x{item.quantity})
-                      </span>
-                      <span>₹ {(item.price * item.quantity).toFixed(2)}</span>
-                    </li>
+                    <div
+                      key={index}
+                      className="flex items-center justify-between p-2 mb-2 border-b"
+                    >
+                      <div className="flex items-center">
+                        <img
+                          src={item.solarImage}
+                          alt={item.name}
+                          value={solarImage}
+                          className="object-cover w-12 h-12 mr-3 rounded-md"
+                        />
+                        <div>
+                          <p
+                            className="text-sm font-medium "
+                            value={productName}
+                          >
+                            {item.name}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm" value={quantity}>
+                          x{item.quantity}
+                        </p>
+                        <p className="text-sm font-medium" value={price}>
+                          ₹ {(item.price * item.quantity).toFixed(2)}
+                        </p>
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
+
                 <hr className="my-2" />
                 <div className="flex justify-between font-semibold">
                   <span>Total</span>
@@ -228,7 +511,7 @@ function Cart() {
               </div>
             </div>
 
-            {/* Card Details Form (Visible if Card is selected) */}
+            {/* Payment method forms */}
             {selectedPaymentMethod === "card" && (
               <div className="mt-6">
                 <h3 className="mb-4 text-lg font-semibold">Card Details</h3>
@@ -290,12 +573,10 @@ function Cart() {
               </div>
             )}
 
-            {/* UPI ID Form (Visible if UPI is selected) */}
             {selectedPaymentMethod === "upi" && (
               <div className="mt-6">
                 <h3 className="mb-4 text-lg font-semibold">UPI Details</h3>
                 <div className="space-y-4">
-                  {/* QR Code for UPI Payment */}
                   <div className="flex flex-col items-center justify-center p-4 border rounded-lg">
                     <QRCode
                       value={`upi://pay?pa=bhautikgajera0012-1@okicici&pn=Bhautik Gajera&am=${calculateTotalCartPrice()}`}
@@ -307,7 +588,6 @@ function Cart() {
                       Scan the QR code to pay using UPI.
                     </p>
                   </div>
-                  {/* UPI ID Input (Optional) */}
                   <input
                     type="text"
                     placeholder="UPI ID (e.g., example@upi)"
@@ -325,10 +605,11 @@ function Cart() {
               </div>
             )}
 
-            {/* Net Banking Form (Visible if Net Banking is selected) */}
             {selectedPaymentMethod === "netbanking" && (
               <div className="mt-6">
-                <h3 className="mb-4 text-lg font-semibold">Net Banking Details</h3>
+                <h3 className="mb-4 text-lg font-semibold">
+                  Net Banking Details
+                </h3>
                 <form className="space-y-4">
                   <select
                     className={`w-full p-2 border rounded-lg ${
@@ -369,13 +650,14 @@ function Cart() {
                     required
                   />
                   {errors.accountNumber && (
-                    <p className="text-sm text-red-500">{errors.accountNumber}</p>
+                    <p className="text-sm text-red-500">
+                      {errors.accountNumber}
+                    </p>
                   )}
                 </form>
               </div>
             )}
 
-            {/* Action Buttons */}
             <div className="sticky bottom-0 py-4 bg-white">
               <div className="flex justify-end">
                 <button
@@ -408,7 +690,6 @@ function Cart() {
         </div>
       )}
 
-      {/* Success Model */}
       {showSuccessModel && (
         <div className="fixed bottom-4 right-4 animate-slide-in">
           <div className="p-4 text-white bg-green-500 rounded-lg shadow-lg">

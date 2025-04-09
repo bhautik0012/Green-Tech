@@ -24,7 +24,7 @@ const AddProducts = () => {
           },
         }
       );
-      console.log(response.data.status);
+      console.log("========data========", response.data.status);
 
       navigate("/productshow");
       setSolarImage(null);
@@ -36,12 +36,12 @@ const AddProducts = () => {
   };
 
   return (
-    <div 
+    <div
       className="min-h-screen bg-fixed bg-center bg-cover"
-      style={{ 
+      style={{
         backgroundImage: "url('./public/admin1.jpg')",
         // backgroundColor: "rgba(0, 0, 0, 0.5)",
-        backgroundBlendMode: "multiply"
+        backgroundBlendMode: "multiply",
       }}
     >
       <div className="flex items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8">
@@ -64,9 +64,7 @@ const AddProducts = () => {
                 <label className="flex flex-col w-full transition-all duration-300 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50">
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
                     {solarImage ? (
-                      <p className="text-sm text-gray-500">
-                        {solarImage.name}
-                      </p>
+                      <p className="text-sm text-gray-500">{solarImage.name}</p>
                     ) : (
                       <>
                         <svg
@@ -84,7 +82,8 @@ const AddProducts = () => {
                           ></path>
                         </svg>
                         <p className="text-sm text-gray-500">
-                          <span className="font-semibold">Click to upload</span> or drag and drop
+                          <span className="font-semibold">Click to upload</span>{" "}
+                          or drag and drop
                         </p>
                       </>
                     )}

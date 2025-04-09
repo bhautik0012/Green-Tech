@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var register = require('../controller/register')
-var login = require('../controller/login')
+var register = require("../controllers/register");
+var login = require("../controllers/login");
 
 router.post('/',register.register)
 router.get('/',register.register_data)

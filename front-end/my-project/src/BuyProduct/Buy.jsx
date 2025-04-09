@@ -71,7 +71,7 @@ function Buy() {
                   alt={product.productName}
                 />
                 <hr className="border" />
-                <p className="text-[16px] ml-[20px] mt-[20px]">
+                <p className=" ml-[20px] mt-[20px] text-lg font-semibold mb-2">
                   {product.productName}
                 </p>
                 <p className="text-[18px] ml-[20px] mt-[10px]">

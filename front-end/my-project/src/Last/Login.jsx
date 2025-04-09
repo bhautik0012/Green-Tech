@@ -12,14 +12,12 @@ const Login = () => {
   const { isAuthenticated, logout, user } = useAuth();
 
   const handleLogout = () => {
-    axios
-      .get("https://solar-api-d41x.onrender.com/logout")
-      .then(function (response) {
-        console.log(response.data.status);
-        if (response.data.status == "admin logout") {
-          alert("logout");
-        }
-      });
+    axios.get("http://localhost:3001/logout").then(function (response) {
+      console.log(response.data.status);
+      if (response.data.status == "admin logout") {
+        alert("logout");
+      }
+    });
   };
 
   const login = async () => {
@@ -30,16 +28,23 @@ const Login = () => {
     const result = await authLogin(email, password);
 
     await axios
-      .post("https://solar-api-d41x.onrender.com/login", data, {
+      .post("http://localhost:3001/user/login", data, {
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
+          // "Access-Control-Allow-Origin": "*",
         },
+        withCredentials: true,
       })
       .then(function (response) {
-        console.log(response.data.status);
+        // console.log(response.data.status);
+        console.log(
+          "=========data111=========",
+          response?.data?.data?.accessToken
+        );
 
-        if (response.data.status == "true") {
+        if (response.data.statusCode == 200) {
+          localStorage.setItem("token", response?.data?.data?.accessToken);
+          console.log("========login======");
           alert("login success");
           navigate("/");
         } else if (response.data.status == "check email") {

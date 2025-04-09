@@ -1,7 +1,7 @@
 const storage = require('node-persist');
 storage.init();
 
-var registermodel = require('../model/registermodel')
+var registermodel = require("../models/registermodel");
 
 
 exports.register = async(req,res) =>{

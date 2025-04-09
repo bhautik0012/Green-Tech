@@ -43,17 +43,7 @@ function Last() {
               Each month we roll out special offers and discounts for our solar
               panels.
             </p>
-            {/* <div className="pb-1 pl-2 bg-gray-700 border rounded-md lg:w-[370px] lg:h-[40px] lg:ml-[120px] lg:mt-[30px] flex ">
-              <input
-                type="email"
-                placeholder="Your e-mail"
-                className=" bg-gray-700 outline-none rounded-md lg:w-[350px] lg:h-[35px] text-white  placeholder:text-[15px]  "
-              />
-              <button className="p-3">
-                <BsFillSendFill className="transition-all cursor-pointer hover:scale-110" />
-              </button>
-            </div> */}
-
+          
             <div className="lg:flex lg:ml-[130px] gap-5 mt-[70px]  flex  md:hidden  sm:hidden">
               <div>
                 <a

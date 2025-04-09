@@ -4,12 +4,14 @@ const {
   createProduct,
   getAllProducts,
   deleteProduct,
-} = require("../controller/product.controller.js");
+} = require("../controllers/product.controller.js");
+
+const { verifyJWT } = require("../middlewares/auth.middleware");
 
 const router = Router();
 
 router.route("/add").post(upload.single("solarImage"), createProduct);
 router.route("/get").get(getAllProducts);
-router.delete("/delete/:id", deleteProduct);
+router.route("/delete/:id").delete(deleteProduct);
 
 module.exports = router;

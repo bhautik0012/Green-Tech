@@ -8,13 +8,13 @@ const Viewdata = () => {
 
   const deldata = (id) => {
     axios.get("https://solar-api-d41x.onrender.com/delete/" + id);
-    axios.get("https://solar-api-d41x.onrender.com").then((res) => {
+    axios.get("http://localhost:3001/user/all-user").then((res) => {
       setLstUser(res.data.data);
     });
   };
 
   useEffect(() => {
-    axios.get("https://solar-api-d41x.onrender.com").then((res) => {
+    axios.get("http://localhost:3001/user/all-user").then((res) => {
       setLstUser(res.data.data);
       console.log(res.data);
     });
@@ -75,9 +75,9 @@ const Viewdata = () => {
                       </button>
                     </td>
                     <td>
-                      {" "}
+                      
                       <Link
-                        to={`/updatedata/${item._id}`}
+                        to='/check'
                         className="btn btn-success btn-sm"
                       >
                         Check
