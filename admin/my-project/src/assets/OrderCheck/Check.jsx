@@ -64,7 +64,7 @@ const Check = () => {
   }, []);
 
   return (
-    <div className="container px-4 py-8 mx-auto">
+    <div className="container px-8 py-8 mx-auto">
       <h1 className="mb-8 text-3xl font-bold text-gray-800">
         Your Order Details
       </h1>

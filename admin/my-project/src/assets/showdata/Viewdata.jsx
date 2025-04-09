@@ -44,7 +44,7 @@ const Viewdata = () => {
                 <th>Age</th>
                 <th>City</th>
                 <th>Actions</th>
-                <th>Order</th>
+                
               </tr>
             </thead>
 
@@ -74,15 +74,7 @@ const Viewdata = () => {
                         Delete
                       </button>
                     </td>
-                    <td>
-                      
-                      <Link
-                        to='/check'
-                        className="btn btn-success btn-sm"
-                      >
-                        Check
-                      </Link>
-                    </td>
+                   
                   </tr>
                 ))}
             </tbody>
