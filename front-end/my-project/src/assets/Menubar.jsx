@@ -84,7 +84,7 @@ const Navbar = () => {
             aria-label="User menu"
           >
             {isAuthenticated ? (
-              user?.email?.charAt(0).toUpperCase() || "B"
+              user?.email?.charAt(0).toUpperCase() || "U"
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
