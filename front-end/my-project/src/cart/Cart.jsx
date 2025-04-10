@@ -24,8 +24,8 @@ function Cart() {
   const [quantity, setQuantity] = useState("");
 
   const [isProcessing, setIsProcessing] = useState(false);
-  console.log("========Model view ===========",isProcessing);
-  
+  console.log("========Model view ===========", isProcessing);
+
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
   const [cardDetails, setCardDetails] = useState({
     cardNumber: "",
@@ -47,13 +47,6 @@ function Cart() {
       .toFixed(2);
   };
 
-
-
-
-
-
-
-  
   // const handlePayment = () => {
   //   if (cart.length === 0) return;
   //   setShowModal(true);
@@ -64,7 +57,10 @@ function Cart() {
     if (!cardDetails.cardNumber || cardDetails.cardNumber.length !== 16) {
       newErrors.cardNumber = "Card number must be 16 digits.";
     }
-    if (!cardDetails.expiryDate || !/^\d{2}\/\d{2}$/.test(cardDetails.expiryDate)) {
+    if (
+      !cardDetails.expiryDate ||
+      !/^\d{2}\/\d{2}$/.test(cardDetails.expiryDate)
+    ) {
       newErrors.expiryDate = "Expiry date must be in MM/YY format.";
     }
     if (!cardDetails.cvv || cardDetails.cvv.length !== 3) {
@@ -73,7 +69,6 @@ function Cart() {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
 
   const validateUpiId = () => {
     if (!upiId || !/^[\w.-]+@[\w.-]+$/.test(upiId)) {
@@ -88,33 +83,16 @@ function Cart() {
     if (!netBankingDetails.bankName) {
       newErrors.bankName = "Please select a bank.";
     }
-    if (!netBankingDetails.accountNumber || netBankingDetails.accountNumber.length < 10) {
+    if (
+      !netBankingDetails.accountNumber ||
+      netBankingDetails.accountNumber.length < 10
+    ) {
       newErrors.accountNumber = "Account number must be at least 10 digits.";
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   const validateAddress = () => {
     const newErrors = {};
     if (!addressLine.trim()) newErrors.addressLine = "Address is required";
@@ -197,13 +175,13 @@ function Cart() {
       })
       .finally(function () {
         // Reset form after submission
-        setAddressLine("");
-        setEmail("");
-        setState("");
-        setCountry("India");
-        setPincode("");
-        setCity("");
-        setPhoneNumber("");
+        // setAddressLine("");
+        // setEmail("");
+        // setState("");
+        // setCountry("India");
+        // setPincode("");
+        // setCity("");
+        // setPhoneNumber("");
       });
 
     if (!selectedPaymentMethod) {
