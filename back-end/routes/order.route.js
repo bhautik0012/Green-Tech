@@ -17,7 +17,8 @@ router.route("/order/:id").get(verifyJWT, getSingleOrder);
 
 router.route("/orders/me").get(verifyJWT, myOrders);
 
-router.route("/admin/orders").get(verifyJWT, getAllOrders);
+// router.route("/admin/orders").get(verifyJWT, getAllOrders);
+router.route("/admin/orders").get(getAllOrders);
 
 router
   .route("/order/:id")

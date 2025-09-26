@@ -50,7 +50,7 @@ const Check = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:3001/api/v1/orders/me", {
+      .get("http://localhost:3001/api/v1/admin/orders", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
