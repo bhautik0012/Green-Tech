@@ -19,7 +19,7 @@ const Check = () => {
 
   const handleRemoveItem = (itemId) => {
     // setCartItems(cartItems.filter((item) => item.id !== itemId));
-    axios.delete("http://localhost:3001/product/delete/" + itemId, {
+    axios.delete("http://localhost:3001/api/v1/order/" + itemId, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -130,7 +130,7 @@ const Check = () => {
 
                         <div className="flex items-center justify-between mt-4">
                           <button
-                            onClick={(e) => handleRemoveItem(item._id)}
+                            onClick={(e) => handleRemoveItem(orderDetail._id)}
                             className="flex items-center text-red-600 hover:text-red-800"
                           >
                             <svg

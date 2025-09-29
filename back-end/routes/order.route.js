@@ -23,6 +23,6 @@ router.route("/admin/orders").get(getAllOrders);
 router
   .route("/order/:id")
   .put(verifyJWT, updateOrder)
-  .delete(verifyJWT, deleteOrder);
+  .delete(deleteOrder);
 
 module.exports = router;
