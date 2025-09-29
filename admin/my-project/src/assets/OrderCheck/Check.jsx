@@ -91,7 +91,7 @@ const Check = () => {
                   const { address, city, state, country, pinCode, phoneNo } =
                     orderDetail?.shippingInfo || {};
 
-                  const addressText = `${address}, ${city} - ${pinCode}, ${state}, ${country}`;
+                  const addressText = `${address}, ${city} - ${pinCode}, ${state}, ${country},Phone No :${phoneNo}`;
                   return (
                     <li
                       key={item?._id}
