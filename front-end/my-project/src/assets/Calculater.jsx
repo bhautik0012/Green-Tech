@@ -96,7 +96,7 @@ function Calculater() {
         <div className={`text-center mt-16 transition-all duration-1000 ${
           isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'
         }`} style={{ animationDelay: '600ms' }}>
-          <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-8 text-white shadow-2xl">
+          {/* <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-8 text-white shadow-2xl">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
               Ready to Start Your Solar Journey?
             </h3>
@@ -112,7 +112,7 @@ function Calculater() {
               </span>
               <div className="absolute inset-0 bg-green-50 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 

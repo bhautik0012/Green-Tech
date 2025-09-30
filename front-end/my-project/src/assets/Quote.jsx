@@ -79,7 +79,7 @@ function Quote() {
           </div>
 
           {/* CTA Button */}
-          <div className="animate-fadeInUp" style={{ animationDelay: '0.5s' }}>
+          {/* <div className="animate-fadeInUp" style={{ animationDelay: '0.5s' }}>
             <NavLink to="/Contacts">
               <button className="group relative overflow-hidden bg-white text-green-600 font-bold py-4 px-12 rounded-full hover:bg-green-50 focus:outline-none focus:ring-4 focus:ring-white/50 transform hover:scale-105 transition-all duration-300 shadow-2xl text-lg">
                 <span className="relative z-10 flex items-center">
@@ -91,7 +91,7 @@ function Quote() {
                 <div className="absolute inset-0 bg-green-50 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
               </button>
             </NavLink>
-          </div>
+          </div> */}
 
           {/* Trust indicators */}
           <div className="mt-12 flex flex-col md:flex-row items-center justify-center gap-8 text-green-100">
