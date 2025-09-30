@@ -40,7 +40,7 @@ const Solar = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 1500,
     arrows: false,
     fade: true,
     beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex),
