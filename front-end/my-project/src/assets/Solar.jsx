@@ -170,14 +170,14 @@ const Solar = () => {
                   {/* CTA Button */}
                   <div className="animate-fadeInUp" style={{ animationDelay: '0.5s' }}>
                     <NavLink to="/About">
-                      <button className="group relative overflow-hidden bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 px-8 rounded-full hover:from-green-600 hover:to-green-700 focus:outline-none focus:ring-4 focus:ring-green-500/50 transform hover:scale-105 transition-all duration-300 shadow-2xl">
+                      <button className="group relative overflow-hidden bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 px-8 rounded-full hover:from-green-600 hover:to-green-700 focus:outline-none focus:ring-4 focus:ring-green-500/50 transform hover:scale-105 transition-all duration-500 shadow-2xl">
                         <span className="relative z-10 flex items-center">
                           <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                           </svg>
                           FIND OUT MORE
                         </span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-700"></div>
                       </button>
                     </NavLink>
                   </div>
