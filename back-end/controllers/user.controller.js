@@ -247,6 +247,18 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, user, "Account details updated successfully"));
 });
 
+// delete user by id (for admin list management)
+const deleteUser = asyncHandler(async (req, res) => {
+  const id = req.params.id  ;
+  const deleted = await User.findByIdAndDelete(id);
+  if (!deleted) {
+    throw new ApiError(404, "User not found");
+  }
+  return res
+    .status(200)
+    .json(new ApiResponse(200, {}, "User deleted successfully"));
+});
+
 module.exports = {
   registerUser,
   loginUser,
@@ -256,4 +268,5 @@ module.exports = {
   getCurrentUser,
   updateAccountDetails,
   getAllUsers,
+  deleteUser,
 };

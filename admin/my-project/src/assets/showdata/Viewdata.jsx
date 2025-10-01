@@ -3,14 +3,27 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 
-const Viewdata = () => {
-  const [lstUser, setLstUser] = useState(null);
+const API_BASE = "https://solar-api-d41x.onrender.com";
+const LIST_URL = `${API_BASE}/user/all-user`;
 
-  const deldata = (id) => {
-    axios.get("https://solar-api-d41x.onrender.com/delete/" + id);
-    axios.get("http://localhost:3001/user/all-user").then((res) => {
-      setLstUser(res.data.data);
-    });
+const Viewdata = () => {
+  const [lstUser, setLstUser] = useState([]);
+
+  const deldata = async (id) => {
+    try {
+      setLstUser((prev) => prev.filter((u) => u._id !== id));
+      await axios.delete(`${API_BASE}/user/delete/${id}`);
+      const res = await axios.get(LIST_URL);
+      setLstUser(res.data.data || []);
+    } catch (error) {
+      console.log(error);
+      try {
+        const res = await axios.get(LIST_URL);
+        setLstUser(res.data.data || []);
+      } catch (e) {
+        console.log(e);
+      }
+    }
   };
 
   useEffect(() => {

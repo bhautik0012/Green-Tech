@@ -11,6 +11,7 @@ router.get('/login',login.admin_login_data)
 router.post('/login',login.admin_login)
 
 router.get('/delete/:id',register.delete)
+router.delete('/delete/:id',register.delete)
 router.get('/u_data/:id',register.id_data)
 router.post('/update/:id',register.update)
 

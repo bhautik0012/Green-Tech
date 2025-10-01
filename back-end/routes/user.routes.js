@@ -8,6 +8,7 @@ const {
   getCurrentUser,
   updateAccountDetails,
   getAllUsers,
+  deleteUser,
 } = require("../controllers/user.controller");
 const { upload } = require("../middlewares/multer.middleware");
 const { verifyJWT } = require("../middlewares/auth.middleware");
@@ -19,6 +20,7 @@ router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
 
 router.route("/all-user").get(getAllUsers);
+router.route("/delete/:id").delete(deleteUser);
 
 //secured routes
 router.route("/logout").post(verifyJWT, logoutUser);
