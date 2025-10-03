@@ -113,16 +113,9 @@ const ProductTable = () => {
   }, []);
 
   return (
-    <div 
-      className="min-h-screen bg-fixed bg-center bg-cover"
-      style={{ 
-        backgroundImage: "url('./public/admin1.jpg')",
-        // backgroundColor: "rgba(0, 0, 0, 0.5)",
-        backgroundBlendMode: "multiply"
-      }}
-    >
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-green-50">
       <div className="container px-4 py-8 mx-auto">
-        <h2 className="mb-8 text-3xl font-bold text-center text-white">PRODUCT LIST</h2>
+        <h2 className="mb-8 text-3xl font-bold text-center text-green-700">PRODUCT LIST</h2>
 
         <div className="flex justify-end mb-4">
           <Link 
@@ -134,9 +127,9 @@ const ProductTable = () => {
           
         </div>
 
-        <div className="overflow-x-auto bg-white rounded-lg shadow-lg bg-opacity-90 backdrop-blur-sm">
+        <div className="overflow-x-auto bg-white rounded-lg shadow-lg bg-opacity-90 backdrop-blur-sm animate-fade-in-up">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-green-600">
+            <thead className="bg-green-600 thead-shimmer">
               <tr>
                 <th scope="col" className="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">
                   #
@@ -157,7 +150,11 @@ const ProductTable = () => {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200 bg-opacity-80">
               {products.map((product, index) => (
-                <tr key={product._id} className="hover:bg-gray-50">
+                <tr
+                  key={product._id}
+                  className={`hover:bg-green-50 transition-all ${index % 2 === 0 ? 'animate-stagger-left' : 'animate-stagger-right'}`}
+                  style={{ animationDelay: `${index * 70}ms` }}
+                >
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900">{index + 1}</div>
                   </td>
@@ -181,7 +178,7 @@ const ProductTable = () => {
                   <td className="px-6 py-4 text-sm font-medium text-center whitespace-nowrap">
                     <button
                       onClick={() => deleteProduct(product._id)}
-                      className="px-4 py-2 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                      className="px-4 py-2 text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-transform hover:[transform:translateY(-1px)] shadow-sm"
                     >
                       Delete
                     </button>
@@ -192,6 +189,34 @@ const ProductTable = () => {
           </table>
         </div>
       </div>
+      <style jsx>{`
+        @keyframes fade-in-up {
+          0% { opacity: 0; transform: translateY(10px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fade-in-up 500ms ease-out; }
+
+        @keyframes stagger-left {
+          0% { opacity: 0; transform: translateX(-10px); }
+          100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes stagger-right {
+          0% { opacity: 0; transform: translateX(10px); }
+          100% { opacity: 1; transform: translateX(0); }
+        }
+        .animate-stagger-left { animation: stagger-left 420ms ease-out both; }
+        .animate-stagger-right { animation: stagger-right 420ms ease-out both; }
+
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .thead-shimmer {
+          background-image: linear-gradient(90deg, rgba(22,163,74,1) 0%, rgba(22,163,74,0.85) 40%, rgba(255,255,255,0.25) 50%, rgba(22,163,74,0.85) 60%, rgba(22,163,74,1) 100%);
+          background-size: 200% 100%;
+          animation: shimmer 2.2s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };

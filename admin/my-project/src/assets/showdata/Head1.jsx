@@ -186,12 +186,7 @@ function Head1() {
 
   return (
     <div 
-      className="bg-fixed bg-center bg-cover h-[100px]"
-      style={{ 
-        backgroundImage: "url('./public/admin1.jpg')",
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
-        backgroundBlendMode: "multiply"
-      }}
+      className="h-[100px] bg-gradient-to-r from-amber-50 via-white to-green-50"
     >
       <div className="container px-4 py-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">

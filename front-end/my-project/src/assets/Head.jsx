@@ -39,7 +39,8 @@ function Head() {
 
   return (
     <div className="lg:mt-[20px] lg:ml-[120px] md:mt-[20px] sm:mt-[15px]">
-      <div className="items-center justify-between lg:flex md:flex sm:flex">
+      <div className="rounded-xl bg-gradient-to-r from-green-50 via-white to-green-50 shadow-sm px-4 py-3 animate-fade-in-down">
+        <div className="items-center justify-between lg:flex md:flex sm:flex">
         <div className="flex items-center">
           <FontAwesomeIcon
             className="lg:hidden w-[30px] h-[55px] md:mr-5 sm:mr-3 transition-all cursor-pointer hover:scale-110"
@@ -263,7 +264,15 @@ function Head() {
             </a>
           </div>
         </div>
+        </div>
       </div>
+      <style jsx>{`
+        @keyframes fade-in-down {
+          0% { opacity: 0; transform: translateY(-8px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-down { animation: fade-in-down 400ms ease-out; }
+      `}</style>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import Update from "./curd/Update";
 import Adminlogin from "./Adminlogin";
 import Userdata from "./assets/showdata/Userdata";
 import Darshboard from "./assets/Darshboard/Darshboard";
+import AdminDashboard from "./assets/showdata/AdminDashboard";
 import AddProductshow from "./assets/Addproduct/AddProductshow";
 import Order from "./assets/OrderCheck/Order";
 
@@ -13,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Adminlogin />}></Route>
-          <Route path="/viewdata" element={<Userdata />}></Route>
+          <Route path="/viewdata" element={<AdminDashboard />}></Route>
           <Route path="/add-product" element={<Darshboard/>}></Route>
           <Route path="/updatedata/:id" element={<Update />}></Route>
           <Route path="/productshow" element={<AddProductshow/>}></Route>

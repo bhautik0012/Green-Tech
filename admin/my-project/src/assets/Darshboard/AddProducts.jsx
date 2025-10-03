@@ -36,18 +36,11 @@ const AddProducts = () => {
   };
 
   return (
-    <div
-      className="min-h-screen bg-fixed bg-center bg-cover"
-      style={{
-        backgroundImage: "url('./public/admin1.jpg')",
-        // backgroundColor: "rgba(0, 0, 0, 0.5)",
-        backgroundBlendMode: "multiply",
-      }}
-    >
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-green-50">
       <div className="flex items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md p-8 space-y-8 bg-white shadow-2xl bg-opacity-90 rounded-xl backdrop-blur-sm">
+        <div className="w-full max-w-md p-8 space-y-8 bg-white/90 shadow-xl rounded-xl backdrop-blur-sm animate-fade-in-up transition-transform hover:[transform:translateY(-2px)]">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">
+            <h2 className="text-3xl font-extrabold text-green-700">
               Add New Product
             </h2>
             <p className="mt-2 text-sm text-gray-600">
@@ -61,7 +54,7 @@ const AddProducts = () => {
                 Product Image
               </label>
               <div className="flex items-center justify-center w-full">
-                <label className="flex flex-col w-full transition-all duration-300 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer hover:border-green-500 hover:bg-gray-50">
+                <label className="flex flex-col w-full transition-all duration-300 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer hover:border-green-500 hover:bg-green-50/50">
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
                     {solarImage ? (
                       <p className="text-sm text-gray-500">{solarImage.name}</p>
@@ -81,7 +74,7 @@ const AddProducts = () => {
                             d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                           ></path>
                         </svg>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-600">
                           <span className="font-semibold">Click to upload</span>{" "}
                           or drag and drop
                         </p>
@@ -103,7 +96,7 @@ const AddProducts = () => {
                 Product Name
               </label>
               <input
-                className="w-full px-4 py-2 transition-all border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-4 py-2 transition-all border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent hover:border-green-400"
                 type="text"
                 value={productName}
                 onChange={(e) => setProductName(e.target.value)}
@@ -122,7 +115,7 @@ const AddProducts = () => {
                 </div>
                 <input
                   type="number"
-                  className="block w-full py-2 pr-12 transition-all border border-gray-300 rounded-md pl-7 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className="block w-full py-2 pr-12 transition-all border border-gray-300 rounded-md pl-7 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent hover:border-green-400"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                   placeholder="0.00"
@@ -137,7 +130,7 @@ const AddProducts = () => {
             <div>
               <button
                 onClick={add}
-                className="relative flex justify-center w-full px-4 py-3 text-sm font-medium text-white transition-colors duration-300 bg-green-600 border border-transparent rounded-md group hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                className="relative flex justify-center w-full px-4 py-3 text-sm font-medium text-white transition-all duration-300 bg-green-600 border border-transparent rounded-md group hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 hover:[transform:translateY(-1px)] hover:shadow-md"
               >
                 Add Product
               </button>
@@ -145,6 +138,13 @@ const AddProducts = () => {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        @keyframes fade-in-up {
+          0% { opacity: 0; transform: translateY(10px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fade-in-up 500ms ease-out; }
+      `}</style>
     </div>
   );
 };
