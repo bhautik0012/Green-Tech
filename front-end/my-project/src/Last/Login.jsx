@@ -93,10 +93,7 @@ const Login = () => {
 
             {/* Features */}
             <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
-                <span>Access your solar dashboard</span>
-              </div>
+              
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-white rounded-full"></div>
                 <span>Track your energy savings</span>
